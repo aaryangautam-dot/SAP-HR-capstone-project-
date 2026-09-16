@@ -1,0 +1,114 @@
+{
+  "id": "raven.hr.leaveApproval",
+  "name": "Leave Request Approval Process",
+  "version": "1.0.0",
+  "description": "SAP Build Process Automation workflow process for reviewing and deciding on employee leave requests.",
+  "trigger": {
+    "type": "API",
+    "definitionId": "raven.hr.leaveApproval",
+    "inputs": {
+      "requestID": { "type": "string", "description": "Leave Request UUID" },
+      "requestNumber": { "type": "string", "description": "Human-readable request number (e.g. LR-000001)" },
+      "employeeID": { "type": "string", "description": "Employee UUID" },
+      "employeeCode": { "type": "string", "description": "Employee Code (e.g. EMP001)" },
+      "employeeName": { "type": "string", "description": "Full name of the requesting employee" },
+      "employeeEmail": { "type": "string", "description": "Email address of the requesting employee" },
+      "managerID": { "type": "string", "description": "Manager Employee UUID" },
+      "managerName": { "type": "string", "description": "Full name of the approving manager" },
+      "managerEmail": { "type": "string", "description": "Email address of the approving manager" },
+      "departmentName": { "type": "string", "description": "Department name" },
+      "leaveType": { "type": "string", "description": "Type of leave requested (e.g. Annual Leave, Sick Leave)" },
+      "fromDate": { "type": "string", "format": "date", "description": "Start date of leave (YYYY-MM-DD)" },
+      "toDate": { "type": "string", "format": "date", "description": "End date of leave (YYYY-MM-DD)" },
+      "numberOfDays": { "type": "number", "description": "Total business days requested" },
+      "reason": { "type": "string", "description": "Employee's stated reason for the leave" }
+    }
+  },
+  "steps": [
+    {
+      "id": "step_manager_approval",
+      "type": "UserTask",
+      "name": "Approve Leave Request",
+      "subject": "Leave Request ${context.requestNumber} for ${context.employeeName}",
+      "description": "Review and decide on ${context.numberOfDays} days of ${context.leaveType} requested by ${context.employeeName} (${context.fromDate} to ${context.toDate}).",
+      "priority": "Medium",
+      "recipients": {
+        "users": ["${context.managerEmail}"],
+        "groups": ["HR_Managers"]
+      },
+      "formReference": "forms/approval-form.json",
+      "outcomes": [
+        { "id": "Approve", "label": "Approve", "type": "Positive" },
+        { "id": "Reject", "label": "Reject", "type": "Negative" }
+      ]
+    },
+    {
+      "id": "gateway_decision",
+      "type": "ExclusiveGateway",
+      "name": "Check Manager Decision",
+      "branches": [
+        {
+          "name": "Approved",
+          "condition": "${steps.step_manager_approval.outcome} == 'Approve'",
+          "targetStep": "step_approve_callback"
+        },
+        {
+          "name": "Rejected",
+          "condition": "${steps.step_manager_approval.outcome} == 'Reject'",
+          "targetStep": "step_reject_callback"
+        }
+      ]
+    },
+    {
+      "id": "step_approve_callback",
+      "type": "ServiceTask",
+      "name": "Execute Approve Callback",
+      "actionReference": "bpa-actions-openapi.json#approveLeaveRequest",
+      "destination": "capm-service",
+      "path": "/odata/v4/hr/approveCallback",
+      "method": "POST",
+      "payload": {
+        "requestID": "${context.requestID}",
+        "comment": "${steps.step_manager_approval.decisionComment}"
+      },
+      "targetStep": "step_notify_approval"
+    },
+    {
+      "id": "step_reject_callback",
+      "type": "ServiceTask",
+      "name": "Execute Reject Callback",
+      "actionReference": "bpa-actions-openapi.json#rejectLeaveRequest",
+      "destination": "capm-service",
+      "path": "/odata/v4/hr/rejectCallback",
+      "method": "POST",
+      "payload": {
+        "requestID": "${context.requestID}",
+        "comment": "${steps.step_manager_approval.decisionComment}"
+      },
+      "targetStep": "step_notify_rejection"
+    },
+    {
+      "id": "step_notify_approval",
+      "type": "NotificationTask",
+      "name": "Notify Employee - Approved",
+      "recipient": "${context.employeeEmail}",
+      "subject": "Your Leave Request ${context.requestNumber} has been Approved",
+      "content": "Dear ${context.employeeName},\n\nYour leave request ${context.requestNumber} for ${context.numberOfDays} days of ${context.leaveType} (${context.fromDate} to ${context.toDate}) has been APPROVED by your manager.\n\nManager Notes: ${steps.step_manager_approval.decisionComment || 'None'}\n\nBest regards,\nHR Team",
+      "targetStep": "end_event"
+    },
+    {
+      "id": "step_notify_rejection",
+      "type": "NotificationTask",
+      "name": "Notify Employee - Rejected",
+      "recipient": "${context.employeeEmail}",
+      "subject": "Your Leave Request ${context.requestNumber} has been Rejected",
+      "content": "Dear ${context.employeeName},\n\nYour leave request ${context.requestNumber} for ${context.numberOfDays} days of ${context.leaveType} (${context.fromDate} to ${context.toDate}) was not approved by your manager.\n\nManager Notes: ${steps.step_manager_approval.decisionComment || 'No reason provided'}\n\nBest regards,\nHR Team",
+      "targetStep": "end_event"
+    },
+    {
+      "id": "end_event",
+      "type": "EndEvent",
+      "name": "Process Completed"
+    }
+  ]
+}

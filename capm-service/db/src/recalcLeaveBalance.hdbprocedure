@@ -1,0 +1,32 @@
+PROCEDURE "RECALC_LEAVE_BALANCE" (
+    IN employeeId NVARCHAR(36),
+    IN leaveTypeId NVARCHAR(36),
+    IN yr INTEGER,
+    IN daysTaken DECIMAL(4,1),
+    OUT newBalance DECIMAL(5,1)
+)
+LANGUAGE SQLSCRIPT
+SQL SECURITY INVOKER
+AS
+BEGIN
+
+    UPDATE raven_hr_LeaveBalances
+    SET USED = USED + :daysTaken
+    WHERE EMPLOYEE_ID = :employeeId
+      AND LEAVETYPE_ID = :leaveTypeId
+      AND "YEAR" = :yr;
+
+    UPDATE raven_hr_LeaveBalances
+    SET BALANCE = ENTITLEMENT - USED
+    WHERE EMPLOYEE_ID = :employeeId
+      AND LEAVETYPE_ID = :leaveTypeId
+      AND "YEAR" = :yr;
+
+    SELECT BALANCE
+    INTO newBalance
+    FROM raven_hr_LeaveBalances
+    WHERE EMPLOYEE_ID = :employeeId
+      AND LEAVETYPE_ID = :leaveTypeId
+      AND "YEAR" = :yr;
+
+END;

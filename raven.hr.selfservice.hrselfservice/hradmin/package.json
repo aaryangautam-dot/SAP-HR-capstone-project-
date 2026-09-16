@@ -1,0 +1,21 @@
+{
+    "name": "hradmin",
+    "version": "0.0.1",
+    "description": "HR Admin and Manager Workspace",
+    "keywords": [
+        "ui5",
+        "openui5",
+        "sapui5"
+    ],
+    "main": "webapp/index.html",
+    "dependencies": {},
+    "devDependencies": {
+        "@ui5/cli": "^4.0.33",
+        "@sap/ux-ui5-tooling": "1"
+    },
+    "scripts": {
+        "start": "fiori run --port 8086 --open index.html",
+        "build": "ui5 build --config=ui5.yaml --clean-dest --dest dist && node -e \"require('fs').cpSync('dist', '../approuter/dist/hradmin', {recursive:true})\" && node ../scripts/create-zip.js dist dist/hradmin.zip",
+        "build:dist": "ui5 build --config=ui5.yaml --clean-dest --dest dist"
+    }
+}

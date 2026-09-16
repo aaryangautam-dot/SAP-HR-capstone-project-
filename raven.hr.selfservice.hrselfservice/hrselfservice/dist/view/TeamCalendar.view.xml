@@ -1,0 +1,64 @@
+<mvc:View
+    controllerName="hrselfservice.controller.TeamCalendar"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:unified="sap.ui.unified">
+
+    <Page
+        title="Team Leave Calendar"
+        showNavButton="true"
+        navButtonPress=".onNavBack">
+
+        <content>
+
+            <VBox class="sapUiMediumMargin">
+
+                <Toolbar>
+                    <Title text="Team Leave Schedule" level="H2"/>
+                    <ToolbarSpacer/>
+                    <Select
+                        id="departmentFilter"
+                        selectedKey="Engineering"
+                        change=".onDepartmentChange">
+                        <items>
+                            <core:Item key="Engineering" text="Engineering"/>
+                            <core:Item key="Human Resources" text="Human Resources"/>
+                            <core:Item key="Finance" text="Finance"/>
+                        </items>
+                    </Select>
+                </Toolbar>
+
+                <PlanningCalendar
+                    id="teamPlanningCalendar"
+                    startDate="{calendar>/startDate}"
+                    rows="{/LeaveRequestOverview}"
+                    appointmentsVisualization="Filled"
+                    class="sapUiSmallMarginTop">
+                    <rows>
+                        <PlanningCalendarRow
+                            title="{firstName} {lastName}"
+                            text="{departmentName} - {leaveTypeName}"
+                            appointments="{
+                                path: '/LeaveRequestOverview',
+                                templateShareable: false
+                            }">
+                            <appointments>
+                                <unified:CalendarAppointment
+                                    startDate="{path: 'fromDate', formatter: '.formatDate'}"
+                                    endDate="{path: 'toDate', formatter: '.formatDate'}"
+                                    title="{leaveTypeName} ({status})"
+                                    text="{reason}"
+                                    type="Type01"/>
+                            </appointments>
+                        </PlanningCalendarRow>
+                    </rows>
+                </PlanningCalendar>
+
+            </VBox>
+
+        </content>
+
+    </Page>
+
+</mvc:View>

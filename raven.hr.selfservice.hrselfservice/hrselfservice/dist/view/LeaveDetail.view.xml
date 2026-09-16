@@ -1,0 +1,206 @@
+<mvc:View
+    controllerName="hrselfservice.controller.LeaveDetail"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:uxap="sap.uxap"
+    xmlns:layout="sap.ui.layout">
+
+    <Page
+        title="Leave Request Details"
+        showNavButton="true"
+        navButtonPress=".onNavBack">
+
+        <content>
+
+            <uxap:ObjectPageLayout
+                id="ObjectPageLayout"
+                enableLazyLoading="true"
+                useIconTabBar="true"
+                showTitleInHeaderContent="true"
+                upperCaseInHeaderTitle="false">
+
+                <uxap:headerTitle>
+                    <uxap:ObjectPageDynamicHeaderTitle>
+
+                        <uxap:expandedHeading>
+                            <HBox alignItems="Center">
+                                <Title text="Request: {requestNumber}" wrapping="true"/>
+                            </HBox>
+                        </uxap:expandedHeading>
+
+                        <uxap:snappedHeading>
+                            <HBox alignItems="Center">
+                                <Title text="{requestNumber}" wrapping="true"/>
+                            </HBox>
+                        </uxap:snappedHeading>
+
+                        <uxap:actions>
+                            <Button
+                                id="btnCancel"
+                                text="Cancel Request"
+                                type="Reject"
+                                icon="sap-icon://sys-cancel"
+                                press=".onCancelRequest"/>
+                        </uxap:actions>
+
+                    </uxap:ObjectPageDynamicHeaderTitle>
+                </uxap:headerTitle>
+
+                <uxap:headerContent>
+                    <HBox wrap="Wrap">
+                        <VBox class="sapUiMediumMarginEnd">
+                            <Label text="Status"/>
+                            <ObjectStatus
+                                text="{status}"
+                                state="{
+                                    path: 'status',
+                                    formatter: '.formatStatusState'
+                                }"/>
+                        </VBox>
+                        <VBox class="sapUiMediumMarginEnd">
+                            <Label text="Number of Days"/>
+                            <Text text="{numberOfDays} Days"/>
+                        </VBox>
+                        <VBox class="sapUiMediumMarginEnd">
+                            <Label text="From Date"/>
+                            <Text text="{fromDate}"/>
+                        </VBox>
+                        <VBox class="sapUiMediumMarginEnd">
+                            <Label text="To Date"/>
+                            <Text text="{toDate}"/>
+                        </VBox>
+                    </HBox>
+                </uxap:headerContent>
+
+                <uxap:sections>
+
+                    <uxap:ObjectPageSection title="General Information">
+                        <uxap:subSections>
+                            <uxap:ObjectPageSubSection>
+                                <uxap:blocks>
+                                    <VBox class="sapUiSmallMargin">
+                                        <layout:Grid defaultSpan="L6 M6 S12">
+                                            <VBox>
+                                                <Label text="Request Number"/>
+                                                <Text text="{requestNumber}"/>
+                                                <Label text="Reason" class="sapUiSmallMarginTop"/>
+                                                <Text text="{reason}"/>
+                                            </VBox>
+                                            <VBox>
+                                                <Label text="Manager Comment"/>
+                                                <Text text="{managerComment}"/>
+                                                <Label text="Workflow Instance ID" class="sapUiSmallMarginTop"/>
+                                                <Text text="{workflowInstanceId}"/>
+                                            </VBox>
+                                        </layout:Grid>
+                                    </VBox>
+                                </uxap:blocks>
+                            </uxap:ObjectPageSubSection>
+                        </uxap:subSections>
+                    </uxap:ObjectPageSection>
+
+                    <uxap:ObjectPageSection title="BPA Workflow Tracking">
+                        <uxap:subSections>
+                            <uxap:ObjectPageSubSection>
+                                <uxap:blocks>
+                                    <VBox class="sapUiSmallMargin">
+                                        <Panel headerText="Process Automation Lifecycle" expandable="false">
+                                            <content>
+                                                <VBox class="sapUiSmallMargin">
+                                                    <Label text="Workflow Stage"/>
+                                                    <ObjectStatus
+                                                        text="{
+                                                            path: 'status',
+                                                            formatter: '.formatWorkflowStep'
+                                                        }"
+                                                        state="{
+                                                            path: 'status',
+                                                            formatter: '.formatStatusState'
+                                                        }"
+                                                        class="sapUiSmallMarginBottom"/>
+                                                    <ProgressIndicator
+                                                        percentValue="{
+                                                            path: 'status',
+                                                            formatter: '.formatWorkflowPercent'
+                                                        }"
+                                                        displayValue="{
+                                                            path: 'status',
+                                                            formatter: '.formatWorkflowStep'
+                                                        }"
+                                                        state="{
+                                                            path: 'status',
+                                                            formatter: '.formatWorkflowProgressState'
+                                                        }"
+                                                        class="sapUiSmallMarginBottom"/>
+                                                    <layout:Grid defaultSpan="L4 M4 S12" class="sapUiSmallMarginTop">
+                                                        <VBox>
+                                                            <Label text="Workflow Process Definition"/>
+                                                            <Text text="raven.hr.leaveApproval"/>
+                                                        </VBox>
+                                                        <VBox>
+                                                            <Label text="BPA Workflow Instance ID"/>
+                                                            <ObjectStatus
+                                                                text="{workflowInstanceId}"
+                                                                icon="sap-icon://process"
+                                                                state="Information"/>
+                                                        </VBox>
+                                                        <VBox>
+                                                            <Label text="Manager Decision Notes"/>
+                                                            <Text text="{managerComment}"/>
+                                                        </VBox>
+                                                    </layout:Grid>
+                                                </VBox>
+                                            </content>
+                                        </Panel>
+                                    </VBox>
+                                </uxap:blocks>
+                            </uxap:ObjectPageSubSection>
+                        </uxap:subSections>
+                    </uxap:ObjectPageSection>
+
+                    <uxap:ObjectPageSection title="Attachments">
+                        <uxap:subSections>
+                            <uxap:ObjectPageSubSection>
+                                <uxap:blocks>
+                                    <Table
+                                        id="detailAttachmentsTable"
+                                        items="{attachments}"
+                                        noDataText="No attachments uploaded">
+                                        <columns>
+                                            <Column>
+                                                <Text text="File Name"/>
+                                            </Column>
+                                            <Column>
+                                                <Text text="Media Type"/>
+                                            </Column>
+                                            <Column>
+                                                <Text text="Uploaded At"/>
+                                            </Column>
+                                        </columns>
+                                        <items>
+                                            <ColumnListItem>
+                                                <cells>
+                                                    <Link
+                                                        text="{fileName}"
+                                                        href="/odata/v4/hr/LeaveRequestAttachments({ID})/content"
+                                                        target="_blank"/>
+                                                    <Text text="{mediaType}"/>
+                                                    <Text text="{uploadedAt}"/>
+                                                </cells>
+                                            </ColumnListItem>
+                                        </items>
+                                    </Table>
+                                </uxap:blocks>
+                            </uxap:ObjectPageSubSection>
+                        </uxap:subSections>
+                    </uxap:ObjectPageSection>
+
+                </uxap:sections>
+
+            </uxap:ObjectPageLayout>
+
+        </content>
+
+    </Page>
+
+</mvc:View>

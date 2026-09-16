@@ -1,0 +1,132 @@
+_schema-version: "3.2"
+
+ID: raven.hr.selfservice.hrselfservice
+
+version: 0.0.1
+
+build-parameters:
+  before-all:
+    - builder: custom
+      commands:
+        - npm run build:workspaces
+
+modules:
+
+  - name: hrselfservice
+    type: html5
+    path: hrselfservice
+    build-parameters:
+      builder: custom
+      commands: []
+      build-result: dist
+      supported-platforms: []
+
+  - name: hradmin
+    type: html5
+    path: hradmin
+    build-parameters:
+      builder: custom
+      commands: []
+      build-result: dist
+      supported-platforms: []
+
+  - name: hr-ui-content-deployer
+    type: com.sap.application.content
+    path: .
+    requires:
+      - name: hr-html5-repo-host
+        parameters:
+          content-target: true
+    build-parameters:
+      build-result: resources
+      requires:
+        - artifacts:
+            - hrselfservice.zip
+          name: hrselfservice
+          target-path: resources/
+        - artifacts:
+            - hradmin.zip
+          name: hradmin
+          target-path: resources/
+
+  - name: hr-destination-content
+    type: com.sap.application.content
+    build-parameters:
+      no-source: true
+    requires:
+      - name: raven.hr.selfservice.hrselfservice-destination-service
+        parameters:
+          content-target: true
+      - name: hr-html5-repo-host
+        parameters:
+          service-key:
+            name: hr-html5-repo-host-key
+      - name: capm-service-auth
+        parameters:
+          service-key:
+            name: capm-service-auth-key
+    parameters:
+      content:
+        instance:
+          destinations:
+            - Name: hr-html5-repo-host
+              ServiceInstanceName: hr-html5-repo-host
+              ServiceKeyName: hr-html5-repo-host-key
+              sap.cloud.service: raven.hr
+            - Name: hr-uaa
+              Authentication: OAuth2UserTokenExchange
+              ServiceInstanceName: capm-service-auth
+              ServiceKeyName: capm-service-auth-key
+              sap.cloud.service: raven.hr
+          existing_destinations_policy: update
+
+  - name: raven.hr.selfservice.hrselfservice-approuter
+    type: nodejs
+    path: approuter
+
+    requires:
+      - name: raven.hr.selfservice.hrselfservice-destination-service
+      - name: capm-service-auth
+      - name: hr-html5-repo-runtime
+
+    provides:
+      - name: approuter
+        properties:
+          callback-url: ${default-url}/login/callback
+
+    parameters:
+      disk-quota: 1024M
+      memory: 1024M
+
+    properties:
+      TENANT_HOST_PATTERN: "^(.*)-dev-raven-hr-selfservice-hrselfservice-approuter.cfapps.us10-001.hana.ondemand.com"
+
+resources:
+
+  - name: hr-html5-repo-host
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: html5-apps-repo
+      service-plan: app-host
+
+  - name: hr-html5-repo-runtime
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: html5-apps-repo
+      service-plan: app-runtime
+
+  - name: raven.hr.selfservice.hrselfservice-destination-service
+    type: org.cloudfoundry.managed-service
+
+    parameters:
+
+      service: destination
+      service-name: raven.hr.selfservice.hrselfservice-destination-service
+      service-plan: lite
+
+      config:
+
+        HTML5Runtime_enabled: true
+
+  - name: capm-service-auth
+    type: org.cloudfoundry.existing-service

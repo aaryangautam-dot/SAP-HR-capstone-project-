@@ -1,0 +1,170 @@
+#2026 09 14 10:22:52.314#Z#DEBUG#16b25dd8-b026-11f1-940d-eeee0a931608.capm-service-srv#flowable-async-job-executor-thread-1543#
+[PollStageAppStatusExecution] 0633157c-47cd-4e1d-a58c-3252fa278ffe [2026-09-14T10:22:02.766399] Updated app with guid 0633157c-47cd-4e1d-a58c-3252fa278ffe ({"lifecycle"=>{"data"=>{"buildpacks"=>["nodejs_buildpack"]}, "type"=>"buildpack"}}) (STDOUT, API)#
+#2026 09 14 10:22:52.314#Z#DEBUG#16b25dd8-b026-11f1-940d-eeee0a931608.capm-service-srv#flowable-async-job-executor-thread-1543#
+[PollStageAppStatusExecution] 0633157c-47cd-4e1d-a58c-3252fa278ffe [2026-09-14T10:22:02.867084] Updating process: "web" (STDOUT, API)#
+#2026 09 14 10:22:52.314#Z#DEBUG#16b25dd8-b026-11f1-940d-eeee0a931608.capm-service-srv#flowable-async-job-executor-thread-1543#
+[PollStageAppStatusExecution] 0633157c-47cd-4e1d-a58c-3252fa278ffe [2026-09-14T10:22:32.376739] Uploading app package for app with guid 0633157c-47cd-4e1d-a58c-3252fa278ffe (STDOUT, API)#
+#2026 09 14 10:22:52.314#Z#DEBUG#16b25dd8-b026-11f1-940d-eeee0a931608.capm-service-srv#flowable-async-job-executor-thread-1543#
+[PollStageAppStatusExecution] 0633157c-47cd-4e1d-a58c-3252fa278ffe [2026-09-14T10:22:32.599150] Updated app with guid 0633157c-47cd-4e1d-a58c-3252fa278ffe ({"environment_variables"=>"[PRIVATE DATA HIDDEN]"}) (STDOUT, API)#
+#2026 09 14 10:22:52.314#Z#DEBUG#16b25dd8-b026-11f1-940d-eeee0a931608.capm-service-srv#flowable-async-job-executor-thread-1543#
+[PollStageAppStatusExecution] 0633157c-47cd-4e1d-a58c-3252fa278ffe [2026-09-14T10:22:42.817566] Stopping app with guid 0633157c-47cd-4e1d-a58c-3252fa278ffe (STDOUT, API)#
+#2026 09 14 10:22:52.314#Z#DEBUG#16b25dd8-b026-11f1-940d-eeee0a931608.capm-service-srv#flowable-async-job-executor-thread-1543#
+[PollStageAppStatusExecution] 0633157c-47cd-4e1d-a58c-3252fa278ffe [2026-09-14T10:22:42.850635] Cell 77283d80-dfa7-40ba-ba4e-265aef112085 stopping instance ec961971-61de-404e-5381-c77f (STDOUT, CELL)#
+#2026 09 14 10:22:52.314#Z#DEBUG#16b25dd8-b026-11f1-940d-eeee0a931608.capm-service-srv#flowable-async-job-executor-thread-1543#
+[PollStageAppStatusExecution] 0633157c-47cd-4e1d-a58c-3252fa278ffe [2026-09-14T10:22:43.082999] Creating build for app with guid 0633157c-47cd-4e1d-a58c-3252fa278ffe (STDOUT, API)#
+#2026 09 14 10:22:52.314#Z#DEBUG#16b25dd8-b026-11f1-940d-eeee0a931608.capm-service-srv#flowable-async-job-executor-thread-1543#
+[PollStageAppStatusExecution] 0633157c-47cd-4e1d-a58c-3252fa278ffe [2026-09-14T10:22:43.473886] Downloading nodejs_buildpack... (STDOUT, STG)#
+#2026 09 14 10:22:52.314#Z#DEBUG#16b25dd8-b026-11f1-940d-eeee0a931608.capm-service-srv#flowable-async-job-executor-thread-1543#
+[PollStageAppStatusExecution] 0633157c-47cd-4e1d-a58c-3252fa278ffe [2026-09-14T10:22:43.522699] Downloaded nodejs_buildpack (STDOUT, STG)#
+#2026 09 14 10:22:52.314#Z#DEBUG#16b25dd8-b026-11f1-940d-eeee0a931608.capm-service-srv#flowable-async-job-executor-thread-1543#
+[PollStageAppStatusExecution] 0633157c-47cd-4e1d-a58c-3252fa278ffe [2026-09-14T10:22:43.522811] Cell c839c7b1-088e-41af-b9b7-66256aacd457 creating container for instance d8cd6603-31a0-4bb9-8a77-914c62670902 (STDOUT, STG)#
+#2026 09 14 10:22:52.314#Z#DEBUG#16b25dd8-b026-11f1-940d-eeee0a931608.capm-service-srv#flowable-async-job-executor-thread-1543#
+[PollStageAppStatusExecution] 0633157c-47cd-4e1d-a58c-3252fa278ffe [2026-09-14T10:22:44.298602] Security group rules were updated (STDOUT, STG)#
+#2026 09 14 10:22:52.314#Z#DEBUG#16b25dd8-b026-11f1-940d-eeee0a931608.capm-service-srv#flowable-async-job-executor-thread-1543#
+[PollStageAppStatusExecution] 0633157c-47cd-4e1d-a58c-3252fa278ffe [2026-09-14T10:22:44.397549] Cell c839c7b1-088e-41af-b9b7-66256aacd457 successfully created container for instance d8cd6603-31a0-4bb9-8a77-914c62670902 (STDOUT, STG)#
+#2026 09 14 10:22:52.314#Z#DEBUG#16b25dd8-b026-11f1-940d-eeee0a931608.capm-service-srv#flowable-async-job-executor-thread-1543#
+[PollStageAppStatusExecution] 0633157c-47cd-4e1d-a58c-3252fa278ffe [2026-09-14T10:22:45.135954] Downloading build artifacts cache... (STDOUT, STG)#
+#2026 09 14 10:22:52.314#Z#DEBUG#16b25dd8-b026-11f1-940d-eeee0a931608.capm-service-srv#flowable-async-job-executor-thread-1543#
+[PollStageAppStatusExecution] 0633157c-47cd-4e1d-a58c-3252fa278ffe [2026-09-14T10:22:45.136690] Downloading app package... (STDOUT, STG)#
+#2026 09 14 10:22:52.314#Z#DEBUG#16b25dd8-b026-11f1-940d-eeee0a931608.capm-service-srv#flowable-async-job-executor-thread-1543#
+[PollStageAppStatusExecution] 0633157c-47cd-4e1d-a58c-3252fa278ffe [2026-09-14T10:22:45.210701] Downloaded build artifacts cache (225B) (STDOUT, STG)#
+#2026 09 14 10:22:52.314#Z#DEBUG#16b25dd8-b026-11f1-940d-eeee0a931608.capm-service-srv#flowable-async-job-executor-thread-1543#
+[PollStageAppStatusExecution] 0633157c-47cd-4e1d-a58c-3252fa278ffe [2026-09-14T10:22:45.770008] Downloaded app package (3.4M) (STDOUT, STG)#
+#2026 09 14 10:22:52.314#Z#DEBUG#16b25dd8-b026-11f1-940d-eeee0a931608.capm-service-srv#flowable-async-job-executor-thread-1543#
+[PollStageAppStatusExecution] 0633157c-47cd-4e1d-a58c-3252fa278ffe [2026-09-14T10:22:45.913804] -----> Nodejs Buildpack version 1.9.3 (STDOUT, STG)#
+#2026 09 14 10:22:52.314#Z#DEBUG#16b25dd8-b026-11f1-940d-eeee0a931608.capm-service-srv#flowable-async-job-executor-thread-1543#
+[PollStageAppStatusExecution] 0633157c-47cd-4e1d-a58c-3252fa278ffe [2026-09-14T10:22:46.202753] -----> Bootstrapping python (STDOUT, STG)#
+#2026 09 14 10:22:52.314#Z#DEBUG#16b25dd8-b026-11f1-940d-eeee0a931608.capm-service-srv#flowable-async-job-executor-thread-1543#
+[PollStageAppStatusExecution] 0633157c-47cd-4e1d-a58c-3252fa278ffe [2026-09-14T10:22:46.202783] -----> Installing python 3.13.14 (STDOUT, STG)#
+#2026 09 14 10:22:52.314#Z#DEBUG#16b25dd8-b026-11f1-940d-eeee0a931608.capm-service-srv#flowable-async-job-executor-thread-1543#
+[PollStageAppStatusExecution] 0633157c-47cd-4e1d-a58c-3252fa278ffe [2026-09-14T10:22:46.202891] Copy [/tmp/buildpacks/336fb825d4d72bff/dependencies/4b4266a2ff36730aef37b88b668ca327/python_3.13.14_linux_x64_cflinuxfs4_b80d4954.tgz] (STDOUT, STG)#
+#2026 09 14 10:22:52.314#Z#DEBUG#16b25dd8-b026-11f1-940d-eeee0a931608.capm-service-srv#flowable-async-job-executor-thread-1543#
+[PollStageAppStatusExecution] 0633157c-47cd-4e1d-a58c-3252fa278ffe [2026-09-14T10:22:50.850833] -----> Installing binaries (STDOUT, STG)#
+#2026 09 14 10:22:52.314#Z#DEBUG#16b25dd8-b026-11f1-940d-eeee0a931608.capm-service-srv#flowable-async-job-executor-thread-1543#
+[PollStageAppStatusExecution] 0633157c-47cd-4e1d-a58c-3252fa278ffe [2026-09-14T10:22:50.851248] engines.node (package.json): >=20 (STDOUT, STG)#
+#2026 09 14 10:22:52.314#Z#DEBUG#16b25dd8-b026-11f1-940d-eeee0a931608.capm-service-srv#flowable-async-job-executor-thread-1543#
+[PollStageAppStatusExecution] 0633157c-47cd-4e1d-a58c-3252fa278ffe [2026-09-14T10:22:50.851263] engines.npm (package.json): unspecified (use default) (STDOUT, STG)#
+#2026 09 14 10:22:52.314#Z#DEBUG#16b25dd8-b026-11f1-940d-eeee0a931608.capm-service-srv#flowable-async-job-executor-thread-1543#
+[PollStageAppStatusExecution] 0633157c-47cd-4e1d-a58c-3252fa278ffe [2026-09-14T10:22:50.851310] [31;1m**WARNING**[0m Dangerous semver range (>) in engines.node. See: http://docs.cloudfoundry.org/buildpacks/node/node-tips.html (STDOUT, STG)#
+#2026 09 14 10:22:52.314#Z#DEBUG#16b25dd8-b026-11f1-940d-eeee0a931608.capm-service-srv#flowable-async-job-executor-thread-1543#
+[PollStageAppStatusExecution] 0633157c-47cd-4e1d-a58c-3252fa278ffe [2026-09-14T10:22:50.851474] -----> Installing node 24.18.0 (STDOUT, STG)#
+#2026 09 14 10:22:52.314#Z#DEBUG#16b25dd8-b026-11f1-940d-eeee0a931608.capm-service-srv#flowable-async-job-executor-thread-1543#
+[PollStageAppStatusExecution] 0633157c-47cd-4e1d-a58c-3252fa278ffe [2026-09-14T10:22:50.851653] Copy [/tmp/buildpacks/336fb825d4d72bff/dependencies/dffbbb835fcd073c4544f78eb6247fac/node_24.18.0_linux_x64_cflinuxfs4_cdfed650.tgz] (STDOUT, STG)#
+#2026 09 14 10:23:02.393#Z#DEBUG#16b25dd8-b026-11f1-940d-eeee0a931608.capm-service-srv#flowable-async-job-executor-thread-1159#
+[PollStageAppStatusExecution] 0633157c-47cd-4e1d-a58c-3252fa278ffe [2026-09-14T10:22:53.442239] Using default npm version: 11.16.0 (STDOUT, STG)#
+#2026 09 14 10:23:02.393#Z#DEBUG#16b25dd8-b026-11f1-940d-eeee0a931608.capm-service-srv#flowable-async-job-executor-thread-1159#
+[PollStageAppStatusExecution] 0633157c-47cd-4e1d-a58c-3252fa278ffe [2026-09-14T10:22:53.442267] -----> Installing yarn 1.22.22 (STDOUT, STG)#
+#2026 09 14 10:23:02.393#Z#DEBUG#16b25dd8-b026-11f1-940d-eeee0a931608.capm-service-srv#flowable-async-job-executor-thread-1159#
+[PollStageAppStatusExecution] 0633157c-47cd-4e1d-a58c-3252fa278ffe [2026-09-14T10:22:53.442522] Copy [/tmp/buildpacks/336fb825d4d72bff/dependencies/e4fe26756e9984a665478d350474fa2e/yarn_1.22.22_linux_noarch_any-stack_b6132b86.tgz] (STDOUT, STG)#
+#2026 09 14 10:23:02.393#Z#DEBUG#16b25dd8-b026-11f1-940d-eeee0a931608.capm-service-srv#flowable-async-job-executor-thread-1159#
+[PollStageAppStatusExecution] 0633157c-47cd-4e1d-a58c-3252fa278ffe [2026-09-14T10:22:53.851762] Installed yarn 1.22.22 (STDOUT, STG)#
+#2026 09 14 10:23:02.393#Z#DEBUG#16b25dd8-b026-11f1-940d-eeee0a931608.capm-service-srv#flowable-async-job-executor-thread-1159#
+[PollStageAppStatusExecution] 0633157c-47cd-4e1d-a58c-3252fa278ffe [2026-09-14T10:22:53.851798] -----> Creating runtime environment (STDOUT, STG)#
+#2026 09 14 10:23:02.393#Z#DEBUG#16b25dd8-b026-11f1-940d-eeee0a931608.capm-service-srv#flowable-async-job-executor-thread-1159#
+[PollStageAppStatusExecution] 0633157c-47cd-4e1d-a58c-3252fa278ffe [2026-09-14T10:22:53.853837] NODE_ENV=production (STDOUT, STG)#
+#2026 09 14 10:23:02.393#Z#DEBUG#16b25dd8-b026-11f1-940d-eeee0a931608.capm-service-srv#flowable-async-job-executor-thread-1159#
+[PollStageAppStatusExecution] 0633157c-47cd-4e1d-a58c-3252fa278ffe [2026-09-14T10:22:53.853928] NODE_HOME=/tmp/contents1956402050/deps/0/node (STDOUT, STG)#
+#2026 09 14 10:23:02.393#Z#DEBUG#16b25dd8-b026-11f1-940d-eeee0a931608.capm-service-srv#flowable-async-job-executor-thread-1159#
+[PollStageAppStatusExecution] 0633157c-47cd-4e1d-a58c-3252fa278ffe [2026-09-14T10:22:53.853946] NODE_MODULES_CACHE=true (STDOUT, STG)#
+#2026 09 14 10:23:02.393#Z#DEBUG#16b25dd8-b026-11f1-940d-eeee0a931608.capm-service-srv#flowable-async-job-executor-thread-1159#
+[PollStageAppStatusExecution] 0633157c-47cd-4e1d-a58c-3252fa278ffe [2026-09-14T10:22:53.854016] NODE_VERBOSE=false (STDOUT, STG)#
+#2026 09 14 10:23:02.393#Z#DEBUG#16b25dd8-b026-11f1-940d-eeee0a931608.capm-service-srv#flowable-async-job-executor-thread-1159#
+[PollStageAppStatusExecution] 0633157c-47cd-4e1d-a58c-3252fa278ffe [2026-09-14T10:22:53.854041] NPM_CONFIG_LOGLEVEL=error (STDOUT, STG)#
+#2026 09 14 10:23:02.393#Z#DEBUG#16b25dd8-b026-11f1-940d-eeee0a931608.capm-service-srv#flowable-async-job-executor-thread-1159#
+[PollStageAppStatusExecution] 0633157c-47cd-4e1d-a58c-3252fa278ffe [2026-09-14T10:22:53.854045] NPM_CONFIG_PRODUCTION=true (STDOUT, STG)#
+#2026 09 14 10:23:02.393#Z#DEBUG#16b25dd8-b026-11f1-940d-eeee0a931608.capm-service-srv#flowable-async-job-executor-thread-1159#
+[PollStageAppStatusExecution] 0633157c-47cd-4e1d-a58c-3252fa278ffe [2026-09-14T10:22:53.854048] -----> Building dependencies (STDOUT, STG)#
+#2026 09 14 10:23:02.393#Z#DEBUG#16b25dd8-b026-11f1-940d-eeee0a931608.capm-service-srv#flowable-async-job-executor-thread-1159#
+[PollStageAppStatusExecution] 0633157c-47cd-4e1d-a58c-3252fa278ffe [2026-09-14T10:22:53.854056] Prebuild detected (node_modules already exists) (STDOUT, STG)#
+#2026 09 14 10:23:02.393#Z#DEBUG#16b25dd8-b026-11f1-940d-eeee0a931608.capm-service-srv#flowable-async-job-executor-thread-1159#
+[PollStageAppStatusExecution] 0633157c-47cd-4e1d-a58c-3252fa278ffe [2026-09-14T10:22:53.854059] Rebuilding any native modules (STDOUT, STG)#
+#2026 09 14 10:23:02.393#Z#DEBUG#16b25dd8-b026-11f1-940d-eeee0a931608.capm-service-srv#flowable-async-job-executor-thread-1159#
+[PollStageAppStatusExecution] 0633157c-47cd-4e1d-a58c-3252fa278ffe [2026-09-14T10:22:54.598140] rebuilt dependencies successfully (STDOUT, STG)#
+#2026 09 14 10:23:02.393#Z#DEBUG#16b25dd8-b026-11f1-940d-eeee0a931608.capm-service-srv#flowable-async-job-executor-thread-1159#
+[PollStageAppStatusExecution] 0633157c-47cd-4e1d-a58c-3252fa278ffe [2026-09-14T10:22:54.600427] npm notice (STDOUT, STG)#
+#2026 09 14 10:23:02.393#Z#DEBUG#16b25dd8-b026-11f1-940d-eeee0a931608.capm-service-srv#flowable-async-job-executor-thread-1159#
+[PollStageAppStatusExecution] 0633157c-47cd-4e1d-a58c-3252fa278ffe [2026-09-14T10:22:54.600447] npm notice New major version of npm available! 11.16.0 -> 12.0.2 (STDOUT, STG)#
+#2026 09 14 10:23:02.393#Z#DEBUG#16b25dd8-b026-11f1-940d-eeee0a931608.capm-service-srv#flowable-async-job-executor-thread-1159#
+[PollStageAppStatusExecution] 0633157c-47cd-4e1d-a58c-3252fa278ffe [2026-09-14T10:22:54.600452] npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.0.2 (STDOUT, STG)#
+#2026 09 14 10:23:02.393#Z#DEBUG#16b25dd8-b026-11f1-940d-eeee0a931608.capm-service-srv#flowable-async-job-executor-thread-1159#
+[PollStageAppStatusExecution] 0633157c-47cd-4e1d-a58c-3252fa278ffe [2026-09-14T10:22:54.600454] npm notice To update run: npm install -g npm@12.0.2 (STDOUT, STG)#
+#2026 09 14 10:23:02.393#Z#DEBUG#16b25dd8-b026-11f1-940d-eeee0a931608.capm-service-srv#flowable-async-job-executor-thread-1159#
+[PollStageAppStatusExecution] 0633157c-47cd-4e1d-a58c-3252fa278ffe [2026-09-14T10:22:54.600461] npm notice (STDOUT, STG)#
+#2026 09 14 10:23:02.393#Z#DEBUG#16b25dd8-b026-11f1-940d-eeee0a931608.capm-service-srv#flowable-async-job-executor-thread-1159#
+[PollStageAppStatusExecution] 0633157c-47cd-4e1d-a58c-3252fa278ffe [2026-09-14T10:22:54.667205] Installing any new modules (package.json + package-lock.json) (STDOUT, STG)#
+#2026 09 14 10:23:02.393#Z#DEBUG#16b25dd8-b026-11f1-940d-eeee0a931608.capm-service-srv#flowable-async-job-executor-thread-1159#
+[PollStageAppStatusExecution] 0633157c-47cd-4e1d-a58c-3252fa278ffe [2026-09-14T10:22:55.373583] up to date in 617ms (STDOUT, STG)#
+#2026 09 14 10:23:02.393#Z#DEBUG#16b25dd8-b026-11f1-940d-eeee0a931608.capm-service-srv#flowable-async-job-executor-thread-1159#
+[PollStageAppStatusExecution] 0633157c-47cd-4e1d-a58c-3252fa278ffe [2026-09-14T10:22:55.373681] 30 packages are looking for funding (STDOUT, STG)#
+#2026 09 14 10:23:02.393#Z#DEBUG#16b25dd8-b026-11f1-940d-eeee0a931608.capm-service-srv#flowable-async-job-executor-thread-1159#
+[PollStageAppStatusExecution] 0633157c-47cd-4e1d-a58c-3252fa278ffe [2026-09-14T10:22:55.373739] run `npm fund` for details (STDOUT, STG)#
+#2026 09 14 10:23:02.393#Z#DEBUG#16b25dd8-b026-11f1-940d-eeee0a931608.capm-service-srv#flowable-async-job-executor-thread-1159#
+[PollStageAppStatusExecution] 0633157c-47cd-4e1d-a58c-3252fa278ffe [2026-09-14T10:22:56.230944] Contrast Security no credentials found. Will not write environment files. (STDOUT, STG)#
+#2026 09 14 10:23:12.412#Z#DEBUG#16b25dd8-b026-11f1-940d-eeee0a931608.capm-service-srv#flowable-async-job-executor-thread-1177#
+[PollStageAppStatusExecution] 0633157c-47cd-4e1d-a58c-3252fa278ffe [2026-09-14T10:23:05.662648] Exit status 0 (STDOUT, STG)#
+#2026 09 14 10:23:12.412#Z#DEBUG#16b25dd8-b026-11f1-940d-eeee0a931608.capm-service-srv#flowable-async-job-executor-thread-1177#
+[PollStageAppStatusExecution] 0633157c-47cd-4e1d-a58c-3252fa278ffe [2026-09-14T10:23:05.662721] Uploading droplet, build artifacts cache... (STDOUT, STG)#
+#2026 09 14 10:23:12.412#Z#DEBUG#16b25dd8-b026-11f1-940d-eeee0a931608.capm-service-srv#flowable-async-job-executor-thread-1177#
+[PollStageAppStatusExecution] 0633157c-47cd-4e1d-a58c-3252fa278ffe [2026-09-14T10:23:05.662812] Uploading droplet... (STDOUT, STG)#
+#2026 09 14 10:23:12.412#Z#DEBUG#16b25dd8-b026-11f1-940d-eeee0a931608.capm-service-srv#flowable-async-job-executor-thread-1177#
+[PollStageAppStatusExecution] 0633157c-47cd-4e1d-a58c-3252fa278ffe [2026-09-14T10:23:05.663163] Uploading build artifacts cache... (STDOUT, STG)#
+#2026 09 14 10:23:12.412#Z#DEBUG#16b25dd8-b026-11f1-940d-eeee0a931608.capm-service-srv#flowable-async-job-executor-thread-1177#
+[PollStageAppStatusExecution] 0633157c-47cd-4e1d-a58c-3252fa278ffe [2026-09-14T10:23:05.698709] Uploaded build artifacts cache (225B) (STDOUT, STG)#
+#2026 09 14 10:23:12.412#Z#DEBUG#16b25dd8-b026-11f1-940d-eeee0a931608.capm-service-srv#flowable-async-job-executor-thread-1177#
+[PollStageAppStatusExecution] 0633157c-47cd-4e1d-a58c-3252fa278ffe [2026-09-14T10:23:06.335585] Creating droplet for app with guid 0633157c-47cd-4e1d-a58c-3252fa278ffe (STDOUT, API)#
+#2026 09 14 10:23:12.412#Z#DEBUG#16b25dd8-b026-11f1-940d-eeee0a931608.capm-service-srv#flowable-async-job-executor-thread-1177#
+[PollStageAppStatusExecution] 0633157c-47cd-4e1d-a58c-3252fa278ffe [2026-09-14T10:23:08.402968] Uploaded droplet (60M) (STDOUT, STG)#
+#2026 09 14 10:23:12.412#Z#DEBUG#16b25dd8-b026-11f1-940d-eeee0a931608.capm-service-srv#flowable-async-job-executor-thread-1177#
+[PollStageAppStatusExecution] 0633157c-47cd-4e1d-a58c-3252fa278ffe [2026-09-14T10:23:08.427136] Uploading complete (STDOUT, STG)#
+#2026 09 14 10:23:12.412#Z#DEBUG#16b25dd8-b026-11f1-940d-eeee0a931608.capm-service-srv#flowable-async-job-executor-thread-1177#
+[PollStageAppStatusExecution] 0633157c-47cd-4e1d-a58c-3252fa278ffe [2026-09-14T10:23:09.663276] Cell c839c7b1-088e-41af-b9b7-66256aacd457 stopping instance d8cd6603-31a0-4bb9-8a77-914c62670902 (STDOUT, STG)#
+#2026 09 14 10:23:12.412#Z#DEBUG#16b25dd8-b026-11f1-940d-eeee0a931608.capm-service-srv#flowable-async-job-executor-thread-1177#
+[PollStageAppStatusExecution] 0633157c-47cd-4e1d-a58c-3252fa278ffe [2026-09-14T10:23:09.663330] Cell c839c7b1-088e-41af-b9b7-66256aacd457 destroying container for instance d8cd6603-31a0-4bb9-8a77-914c62670902 (STDOUT, STG)#
+#2026 09 14 10:23:12.412#Z#DEBUG#16b25dd8-b026-11f1-940d-eeee0a931608.capm-service-srv#flowable-async-job-executor-thread-1177#
+[PollStageAppStatusExecution] 0633157c-47cd-4e1d-a58c-3252fa278ffe [2026-09-14T10:23:09.714725] Staging complete for build d8cd6603-31a0-4bb9-8a77-914c62670902 (STDOUT, API)#
+#2026 09 14 10:23:22.561#Z#DEBUG#16b25dd8-b026-11f1-940d-eeee0a931608.capm-service-srv#flowable-async-job-executor-thread-1565#
+[PollStartAppStatusExecution] 0633157c-47cd-4e1d-a58c-3252fa278ffe [2026-09-14T10:23:12.278287] Cell c839c7b1-088e-41af-b9b7-66256aacd457 successfully destroyed container for instance d8cd6603-31a0-4bb9-8a77-914c62670902 (STDOUT, STG)#
+#2026 09 14 10:23:22.561#Z#DEBUG#16b25dd8-b026-11f1-940d-eeee0a931608.capm-service-srv#flowable-async-job-executor-thread-1565#
+[PollStartAppStatusExecution] 0633157c-47cd-4e1d-a58c-3252fa278ffe [2026-09-14T10:23:12.486329] Updated app with guid 0633157c-47cd-4e1d-a58c-3252fa278ffe ({:droplet_guid=>"af8eb29a-0368-419a-92d2-6b0d0547ee69"}) (STDOUT, API)#
+#2026 09 14 10:23:22.561#Z#DEBUG#16b25dd8-b026-11f1-940d-eeee0a931608.capm-service-srv#flowable-async-job-executor-thread-1565#
+[PollStartAppStatusExecution] 0633157c-47cd-4e1d-a58c-3252fa278ffe [2026-09-14T10:23:12.693016] Creating revision for app with guid 0633157c-47cd-4e1d-a58c-3252fa278ffe (STDOUT, API)#
+#2026 09 14 10:23:22.561#Z#DEBUG#16b25dd8-b026-11f1-940d-eeee0a931608.capm-service-srv#flowable-async-job-executor-thread-1565#
+[PollStartAppStatusExecution] 0633157c-47cd-4e1d-a58c-3252fa278ffe [2026-09-14T10:23:12.728845] Starting app with guid 0633157c-47cd-4e1d-a58c-3252fa278ffe (STDOUT, API)#
+#2026 09 14 10:23:22.561#Z#DEBUG#16b25dd8-b026-11f1-940d-eeee0a931608.capm-service-srv#flowable-async-job-executor-thread-1565#
+[PollStartAppStatusExecution] 0633157c-47cd-4e1d-a58c-3252fa278ffe [2026-09-14T10:23:13.105721] Cell 77283d80-dfa7-40ba-ba4e-265aef112085 creating container for instance 46a5e1a0-2d21-4899-66e9-e7dd (STDOUT, CELL)#
+#2026 09 14 10:23:22.561#Z#DEBUG#16b25dd8-b026-11f1-940d-eeee0a931608.capm-service-srv#flowable-async-job-executor-thread-1565#
+[PollStartAppStatusExecution] 0633157c-47cd-4e1d-a58c-3252fa278ffe [2026-09-14T10:23:14.078288] Security group rules were updated (STDOUT, CELL)#
+#2026 09 14 10:23:22.561#Z#DEBUG#16b25dd8-b026-11f1-940d-eeee0a931608.capm-service-srv#flowable-async-job-executor-thread-1565#
+[PollStartAppStatusExecution] 0633157c-47cd-4e1d-a58c-3252fa278ffe [2026-09-14T10:23:14.200766] Cell 77283d80-dfa7-40ba-ba4e-265aef112085 successfully created container for instance 46a5e1a0-2d21-4899-66e9-e7dd (STDOUT, CELL)#
+#2026 09 14 10:23:22.561#Z#DEBUG#16b25dd8-b026-11f1-940d-eeee0a931608.capm-service-srv#flowable-async-job-executor-thread-1565#
+[PollStartAppStatusExecution] 0633157c-47cd-4e1d-a58c-3252fa278ffe [2026-09-14T10:23:15.834705] Downloading droplet... (STDOUT, CELL)#
+#2026 09 14 10:23:22.561#Z#DEBUG#16b25dd8-b026-11f1-940d-eeee0a931608.capm-service-srv#flowable-async-job-executor-thread-1565#
+[PollStartAppStatusExecution] 0633157c-47cd-4e1d-a58c-3252fa278ffe [2026-09-14T10:23:20.378411] Downloaded droplet (60M) (STDOUT, CELL)#
+#2026 09 14 10:23:22.561#Z#DEBUG#16b25dd8-b026-11f1-940d-eeee0a931608.capm-service-srv#flowable-async-job-executor-thread-1565#
+[PollStartAppStatusExecution] 0633157c-47cd-4e1d-a58c-3252fa278ffe [2026-09-14T10:23:20.378637] Starting health monitoring of container (STDOUT, CELL)#
+#2026 09 14 10:23:22.561#Z#DEBUG#16b25dd8-b026-11f1-940d-eeee0a931608.capm-service-srv#flowable-async-job-executor-thread-1565#
+[PollStartAppStatusExecution] 0633157c-47cd-4e1d-a58c-3252fa278ffe [2026-09-14T10:23:20.528570] Invoking pre-start scripts. (STDOUT, APP/PROC/WEB)#
+#2026 09 14 10:23:22.561#Z#DEBUG#16b25dd8-b026-11f1-940d-eeee0a931608.capm-service-srv#flowable-async-job-executor-thread-1565#
+[PollStartAppStatusExecution] 0633157c-47cd-4e1d-a58c-3252fa278ffe [2026-09-14T10:23:20.849153] Invoking start command. (STDOUT, APP/PROC/WEB)#
+#2026 09 14 10:23:22.561#Z#DEBUG#16b25dd8-b026-11f1-940d-eeee0a931608.capm-service-srv#flowable-async-job-executor-thread-1565#
+[PollStartAppStatusExecution] 0633157c-47cd-4e1d-a58c-3252fa278ffe [2026-09-14T10:23:21.571761] > capm-service@1.0.0 start (STDOUT, APP/PROC/WEB)#
+#2026 09 14 10:23:22.561#Z#DEBUG#16b25dd8-b026-11f1-940d-eeee0a931608.capm-service-srv#flowable-async-job-executor-thread-1565#
+[PollStartAppStatusExecution] 0633157c-47cd-4e1d-a58c-3252fa278ffe [2026-09-14T10:23:21.571802] > cds-serve (STDOUT, APP/PROC/WEB)#
+#2026 09 14 10:23:22.561#Z#DEBUG#16b25dd8-b026-11f1-940d-eeee0a931608.capm-service-srv#flowable-async-job-executor-thread-1565#
+[PollStartAppStatusExecution] 0633157c-47cd-4e1d-a58c-3252fa278ffe [2026-09-14T10:23:22.134740] {"level":"info","logger":"cds","timestamp":"2026-09-14T10:23:22.132Z","layer":"cds","component_type":"application","container_id":"10.32.3.6","component_id":"0633157c-47cd-4e1d-a58c-3252fa278ffe","component_name":"capm-service-srv","component_instance":0,"source_instance":0,"organization_name":"ab417575trial","organization_id":"06d1c646-2b36-4a95-9166-dd9f50eeb7f9","space_name":"dev","space_id":"583b4ec9-26f7-49b3-a891-378694e7062d","msg":"loaded model from 1 file(s):\n ","type":"log"} (STDOUT, APP/PROC/WEB)#
+#2026 09 14 10:23:22.561#Z#DEBUG#16b25dd8-b026-11f1-940d-eeee0a931608.capm-service-srv#flowable-async-job-executor-thread-1565#
+[PollStartAppStatusExecution] 0633157c-47cd-4e1d-a58c-3252fa278ffe [2026-09-14T10:23:22.136210] srv/csn.json (STDOUT, APP/PROC/WEB)#
+#2026 09 14 10:23:32.586#Z#DEBUG#16b25dd8-b026-11f1-940d-eeee0a931608.capm-service-srv#flowable-async-job-executor-thread-1573#
+[PollStartAppStatusExecution] 0633157c-47cd-4e1d-a58c-3252fa278ffe [2026-09-14T10:23:22.515878] {"level":"info","logger":"cds","timestamp":"2026-09-14T10:23:22.514Z","layer":"cds","component_type":"application","container_id":"10.32.3.6","component_id":"0633157c-47cd-4e1d-a58c-3252fa278ffe","component_name":"capm-service-srv","component_instance":0,"source_instance":0,"organization_name":"ab417575trial","organization_id":"06d1c646-2b36-4a95-9166-dd9f50eeb7f9","space_name":"dev","space_id":"583b4ec9-26f7-49b3-a891-378694e7062d","msg":"connect to db > hana {\n  database_id: '221ad0bc-2da6-46e8-8162-1eebb6fdd039',\n  host: '221ad0bc-2da6-46e8-8162-1eebb6fdd039.hna0.prod-us10.hanacloud.ondemand.com',\n  port: '443',\n  driver: 'com.sap.db.jdbc.Driver',\n  url: 'jdbc:sap://221ad0bc-2da6-46e8-8162-1eebb6fdd039.hna0.prod-us10.hanacloud.ondemand.com:443?encrypt=true&validateCertificate=true&currentschema=6A5478B8D26E43D8A56BA48D201A9E69',\n  schema: '6A5478B8D26E43D8A56BA48D201A9E69',\n  certificate: '...',\n  hdi_user: '6A5478B8D26E43D8A56BA48D201A9E69_00VH3VM73VDDYLPBNTJ5T1DBZ_DT',\n  hdi_password: '...',\n  user: '6A5478B8D26E43D8A56BA48D201A9E69_00VH3VM73VDDYLPBNTJ5T1DBZ_RT',\n  password: '...'\n}","type":"log"} (STDOUT, APP/PROC/WEB)#
+#2026 09 14 10:23:32.586#Z#DEBUG#16b25dd8-b026-11f1-940d-eeee0a931608.capm-service-srv#flowable-async-job-executor-thread-1573#
+[PollStartAppStatusExecution] 0633157c-47cd-4e1d-a58c-3252fa278ffe [2026-09-14T10:23:22.595036] {"level":"info","logger":"cds","timestamp":"2026-09-14T10:23:22.594Z","layer":"cds","component_type":"application","container_id":"10.32.3.6","component_id":"0633157c-47cd-4e1d-a58c-3252fa278ffe","component_name":"capm-service-srv","component_instance":0,"source_instance":0,"organization_name":"ab417575trial","organization_id":"06d1c646-2b36-4a95-9166-dd9f50eeb7f9","space_name":"dev","space_id":"583b4ec9-26f7-49b3-a891-378694e7062d","msg":"using auth strategy { kind: 'jwt' }","type":"log"} (STDOUT, APP/PROC/WEB)#
+#2026 09 14 10:23:32.586#Z#DEBUG#16b25dd8-b026-11f1-940d-eeee0a931608.capm-service-srv#flowable-async-job-executor-thread-1573#
+[PollStartAppStatusExecution] 0633157c-47cd-4e1d-a58c-3252fa278ffe [2026-09-14T10:23:22.644626] {"level":"info","logger":"cds","timestamp":"2026-09-14T10:23:22.644Z","layer":"cds","component_type":"application","container_id":"10.32.3.6","component_id":"0633157c-47cd-4e1d-a58c-3252fa278ffe","component_name":"capm-service-srv","component_instance":0,"source_instance":0,"organization_name":"ab417575trial","organization_id":"06d1c646-2b36-4a95-9166-dd9f50eeb7f9","space_name":"dev","space_id":"583b4ec9-26f7-49b3-a891-378694e7062d","msg":"serving HRService {\n  at: [ '/odata/v4/hr' ],\n  decl: 'srv/csn.json:541',\n  impl: 'srv/hr-service.js'\n}","type":"log"} (STDOUT, APP/PROC/WEB)#
+#2026 09 14 10:23:32.586#Z#DEBUG#16b25dd8-b026-11f1-940d-eeee0a931608.capm-service-srv#flowable-async-job-executor-thread-1573#
+[PollStartAppStatusExecution] 0633157c-47cd-4e1d-a58c-3252fa278ffe [2026-09-14T10:23:22.652170] {"level":"info","logger":"cds","timestamp":"2026-09-14T10:23:22.651Z","layer":"cds","component_type":"application","container_id":"10.32.3.6","component_id":"0633157c-47cd-4e1d-a58c-3252fa278ffe","component_name":"capm-service-srv","component_instance":0,"source_instance":0,"organization_name":"ab417575trial","organization_id":"06d1c646-2b36-4a95-9166-dd9f50eeb7f9","space_name":"dev","space_id":"583b4ec9-26f7-49b3-a891-378694e7062d","msg":"server listening on { url: 'http://localhost:8080' }","type":"log"} (STDOUT, APP/PROC/WEB)#
+#2026 09 14 10:23:32.586#Z#DEBUG#16b25dd8-b026-11f1-940d-eeee0a931608.capm-service-srv#flowable-async-job-executor-thread-1573#
+[PollStartAppStatusExecution] 0633157c-47cd-4e1d-a58c-3252fa278ffe [2026-09-14T10:23:22.654884] {"level":"info","logger":"cds","timestamp":"2026-09-14T10:23:22.654Z","layer":"cds","component_type":"application","container_id":"10.32.3.6","component_id":"0633157c-47cd-4e1d-a58c-3252fa278ffe","component_name":"capm-service-srv","component_instance":0,"source_instance":0,"organization_name":"ab417575trial","organization_id":"06d1c646-2b36-4a95-9166-dd9f50eeb7f9","space_name":"dev","space_id":"583b4ec9-26f7-49b3-a891-378694e7062d","msg":"server v10.1.0 launched in 1067 ms","type":"log"} (STDOUT, APP/PROC/WEB)#
+#2026 09 14 10:23:32.586#Z#DEBUG#16b25dd8-b026-11f1-940d-eeee0a931608.capm-service-srv#flowable-async-job-executor-thread-1573#
+[PollStartAppStatusExecution] 0633157c-47cd-4e1d-a58c-3252fa278ffe [2026-09-14T10:23:24.825570] Container became healthy (STDOUT, CELL)#
+#2026 09 14 10:23:32.586#Z#DEBUG#16b25dd8-b026-11f1-940d-eeee0a931608.capm-service-srv#flowable-async-job-executor-thread-1573#
+[PollStartAppStatusExecution] 0633157c-47cd-4e1d-a58c-3252fa278ffe [2026-09-14T10:23:24.851951] Process became ready with guid 0633157c-47cd-4e1d-a58c-3252fa278ffe payload: {"instance"=>"46a5e1a0-2d21-4899-66e9-e7dd", "index"=>0, "cell_id"=>"77283d80-dfa7-40ba-ba4e-265aef112085", "ready"=>true, "version"=>"d90aa2b0-8ca2-41c5-aa8e-aea02c66f31a"} (STDOUT, API)#

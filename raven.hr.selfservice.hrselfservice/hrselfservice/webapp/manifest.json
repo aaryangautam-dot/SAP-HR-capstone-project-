@@ -1,0 +1,243 @@
+{
+    "_version": "1.86.0",
+
+    "sap.cloud": {
+        "public": true,
+        "service": "raven.hr"
+    },
+
+    "sap.app": {
+        "id": "hrselfservice",
+        "type": "application",
+        "i18n": {
+            "bundleUrl": "i18n/i18n.properties",
+            "supportedLocales": [
+                ""
+            ],
+            "fallbackLocale": ""
+        },
+        "applicationVersion": {
+            "version": "0.0.1"
+        },
+        "title": "My Leave Requests",
+        "description": "Employee Leave Management Self-Service",
+        "resources": "resources.json",
+
+        "dataSources": {
+            "mainService": {
+                "uri": "odata/v4/hr/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "4.0"
+                }
+            }
+        },
+
+        "sourceTemplate": {
+            "id": "@sap-ux/fiori-freestyle-writer:basic",
+            "version": "3.0.39"
+        },
+
+        "crossNavigation": {
+            "inbounds": {
+                "LeaveRequest-manage": {
+                    "semanticObject": "LeaveRequest",
+                    "action": "manage",
+                    "title": "My Leave Requests",
+                    "subTitle": "Employee Self-Service",
+                    "icon": "sap-icon://leave-request",
+                    "signature": {
+                        "parameters": {
+                            "route": {
+                                "defaultValue": {
+                                    "value": "myRequests"
+                                }
+                            }
+                        },
+                        "additionalParameters": "allowed"
+                    }
+                },
+                "LeaveRequest-balance": {
+                    "semanticObject": "LeaveRequest",
+                    "action": "balance",
+                    "title": "My Leave Balance",
+                    "subTitle": "Entitlement & Remaining Days",
+                    "icon": "sap-icon://lead",
+                    "signature": {
+                        "parameters": {
+                            "route": {
+                                "defaultValue": {
+                                    "value": "balance"
+                                }
+                            }
+                        },
+                        "additionalParameters": "allowed"
+                    }
+                },
+                "LeaveRequest-create": {
+                    "semanticObject": "LeaveRequest",
+                    "action": "create",
+                    "title": "Create Leave Request",
+                    "subTitle": "Submit New Request",
+                    "icon": "sap-icon://add",
+                    "signature": {
+                        "parameters": {
+                            "route": {
+                                "defaultValue": {
+                                    "value": "createRequest"
+                                }
+                            }
+                        },
+                        "additionalParameters": "allowed"
+                    }
+                }
+            }
+        }
+    },
+
+    "sap.ui": {
+        "technology": "UI5",
+
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+
+    "sap.ui5": {
+        "flexEnabled": true,
+
+        "dependencies": {
+            "minUI5Version": "1.148.3",
+
+            "libs": {
+                "sap.m": {},
+                "sap.ui.core": {},
+                "sap.uxap": {},
+                "sap.ui.unified": {}
+            }
+        },
+
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+
+                "settings": {
+                    "bundleName": "hrselfservice.i18n.i18n",
+                    "supportedLocales": [
+                        ""
+                    ],
+                    "fallbackLocale": ""
+                }
+            },
+
+            "": {
+                "type": "sap.ui.model.odata.v4.ODataModel",
+                "dataSource": "mainService",
+                "preload": true,
+
+                "settings": {
+                    "operationMode": "Server",
+                    "autoExpandSelect": true,
+                    "earlyRequests": true
+                }
+            }
+        },
+
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"
+                }
+            ]
+        },
+
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "controlAggregation": "pages",
+                "controlId": "app",
+                "transition": "slide",
+                "type": "View",
+                "viewType": "XML",
+                "path": "hrselfservice.view"
+            },
+
+            "routes": [
+                {
+                    "name": "myRequests",
+                    "pattern": "",
+                    "target": "myRequests"
+                },
+                {
+                    "name": "balance",
+                    "pattern": "balance",
+                    "target": "balance"
+                },
+                {
+                    "name": "createRequest",
+                    "pattern": "create-request",
+                    "target": "createRequest"
+                },
+                {
+                    "name": "leaveDetail",
+                    "pattern": "leave-detail/{ID}",
+                    "target": "leaveDetail"
+                },
+                {
+                    "name": "teamCalendar",
+                    "pattern": "team-calendar",
+                    "target": "teamCalendar"
+                }
+            ],
+
+            "targets": {
+                "myRequests": {
+                    "viewName": "MainView",
+                    "viewId": "MainView"
+                },
+
+                "balance": {
+                    "viewName": "Balance",
+                    "viewId": "Balance"
+                },
+
+                "createRequest": {
+                    "viewName": "CreateRequest",
+                    "viewId": "CreateRequest"
+                },
+
+                "leaveDetail": {
+                    "viewName": "LeaveDetail",
+                    "viewId": "LeaveDetail"
+                },
+
+                "teamCalendar": {
+                    "viewName": "TeamCalendar",
+                    "viewId": "TeamCalendar"
+                }
+            }
+        },
+
+        "rootView": {
+            "viewName": "hrselfservice.view.App",
+            "type": "XML",
+            "id": "App"
+        }
+    }
+}

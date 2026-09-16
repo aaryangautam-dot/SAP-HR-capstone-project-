@@ -1,0 +1,197 @@
+<mvc:View
+    controllerName="hrselfservice.controller.CreateRequest"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:upload="sap.m.upload">
+
+    <Page
+        title="Create Leave Request"
+        showNavButton="true"
+        navButtonPress=".onNavBack">
+
+        <content>
+
+            <Wizard
+                id="leaveWizard"
+                finishButtonText="Submit"
+                complete=".onSubmitRequest">
+
+                <!-- STEP 1 -->
+
+                <WizardStep
+                    id="step1"
+                    title="Leave Details">
+
+                    <VBox class="sapUiMediumMargin">
+
+                        <Label
+                            text="Select Leave Type"
+                            labelFor="leaveTypeSelect"
+                            required="true"/>
+
+                        <Select
+                            id="leaveTypeSelect"
+                            width="100%"
+                            forceSelection="false"
+                            items="{
+                                path: '/LeaveTypes',
+                                templateShareable: false
+                            }"
+                            change=".onLeaveTypeChange">
+
+                            <items>
+
+                                <core:Item
+                                    key="{ID}"
+                                    text="{code} - {name}"/>
+
+                            </items>
+
+                        </Select>
+
+                        <Label
+                            text="From Date"
+                            labelFor="fromDate"
+                            required="true"
+                            class="sapUiSmallMarginTop"/>
+
+                        <DatePicker
+                            id="fromDate"
+                            width="100%"
+                            change=".onDateChange"/>
+
+                        <Label
+                            text="To Date"
+                            labelFor="toDate"
+                            required="true"
+                            class="sapUiSmallMarginTop"/>
+
+                        <DatePicker
+                            id="toDate"
+                            width="100%"
+                            change=".onDateChange"/>
+
+                        <Label
+                            text="Number of Days"
+                            class="sapUiSmallMarginTop"/>
+
+                        <ObjectNumber
+                            id="dayPreview"
+                            number="0"
+                            unit="Days"/>
+
+                        <Button
+                            text="Next: Attachments"
+                            type="Emphasized"
+                            press=".onNextStep"
+                            class="sapUiMediumMarginTop"/>
+
+                    </VBox>
+
+                </WizardStep>
+
+                <!-- STEP 2 -->
+
+                <WizardStep
+                    id="step2"
+                    title="Attachments">
+
+                    <VBox class="sapUiMediumMargin">
+
+                        <Title
+                            text="Attach Supporting Documents"
+                            level="H3"/>
+
+                        <upload:UploadSet
+                            id="attachmentSet"
+                            instantUpload="false"
+                            items="{attachmentModel>/items}"
+                            fileTypes="pdf,jpg,png,docx,txt"
+                            maxFileSize="10"
+                            uploadEnabled="true"
+                            afterItemAdded=".onAfterItemAdded"
+                            itemRemoved=".onAttachmentRemoved">
+
+                            <upload:items>
+
+                                <upload:UploadSetItem
+                                    fileName="{attachmentModel>fileName}"
+                                    mediaType="{attachmentModel>mediaType}"
+                                    url="{attachmentModel>url}"
+                                    visibleEdit="false"
+                                    enabledEdit="false"/>
+
+                            </upload:items>
+
+                        </upload:UploadSet>
+
+                        <Button
+                            text="Next: Review"
+                            type="Emphasized"
+                            press=".onGoToReview"
+                            class="sapUiMediumMarginTop"/>
+
+                    </VBox>
+
+                </WizardStep>
+
+                <!-- STEP 3 -->
+
+                <WizardStep
+                    id="step3"
+                    title="Review"
+                    activate=".onReviewStepActivate">
+
+                    <VBox class="sapUiMediumMargin">
+
+                        <Title
+                            text="Review Leave Request"
+                            level="H2"/>
+
+                        <Label
+                            text="Leave Type"
+                            class="sapUiSmallMarginTop"/>
+
+                        <Text
+                            id="reviewLeaveType"/>
+
+                        <Label
+                            text="From Date"
+                            class="sapUiSmallMarginTop"/>
+
+                        <Text
+                            id="reviewFromDate"/>
+
+                        <Label
+                            text="To Date"
+                            class="sapUiSmallMarginTop"/>
+
+                        <Text
+                            id="reviewToDate"/>
+
+                        <Label
+                            text="Days"
+                            class="sapUiSmallMarginTop"/>
+
+                        <Text
+                            id="reviewDays"/>
+
+                        <Button
+                            text="Submit Leave Request"
+                            type="Emphasized"
+                            icon="sap-icon://paper-plane"
+                            press=".onSubmitRequest"
+                            class="sapUiMediumMarginTop"/>
+
+                    </VBox>
+
+                </WizardStep>
+
+            </Wizard>
+
+        </content>
+
+    </Page>
+
+</mvc:View>

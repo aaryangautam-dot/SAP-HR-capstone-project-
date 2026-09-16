@@ -1,0 +1,152 @@
+<mvc:View
+    controllerName="hrselfservice.controller.MainView"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    displayBlock="true">
+
+    <Page title="My Leave Requests">
+
+        <content>
+
+            <IconTabBar
+                id="statusTabs"
+                select=".onStatusFilter">
+
+                <items>
+
+                    <IconTabFilter
+                        key="ALL"
+                        text="All"/>
+
+                    <IconTabFilter
+                        key="Draft"
+                        text="Draft"/>
+
+                    <IconTabFilter
+                        key="Submitted"
+                        text="Submitted"/>
+
+                    <IconTabFilter
+                        key="Approved"
+                        text="Approved"/>
+
+                    <IconTabFilter
+                        key="Rejected"
+                        text="Rejected"/>
+
+                    <IconTabFilter
+                        key="Cancelled"
+                        text="Cancelled"/>
+
+                </items>
+
+            </IconTabBar>
+
+            <Table
+                id="leaveTable"
+                items="{/LeaveRequests}"
+                growing="true"
+                growingThreshold="10"
+                inset="false">
+
+                <headerToolbar>
+
+                    <Toolbar>
+
+                        <Title
+                            text="Leave Requests"
+                            level="H2"/>
+
+                        <ToolbarSpacer/>
+
+                        <Button
+                            text="My Leave Balance"
+                            icon="sap-icon://lead"
+                            press=".onNavToBalance"/>
+
+                        <Button
+                            text="Team Calendar"
+                            icon="sap-icon://calendar"
+                            press=".onNavToTeamCalendar"/>
+
+                        <Button
+                            text="Create Leave Request"
+                            icon="sap-icon://create"
+                            type="Emphasized"
+                            press=".onCreateRequest"/>
+
+                    </Toolbar>
+
+                </headerToolbar>
+
+                <columns>
+
+                    <Column>
+                        <Text text="Request Number"/>
+                    </Column>
+
+                    <Column>
+                        <Text text="Leave Type"/>
+                    </Column>
+
+                    <Column>
+                        <Text text="From"/>
+                    </Column>
+
+                    <Column>
+                        <Text text="To"/>
+                    </Column>
+
+                    <Column>
+                        <Text text="Days"/>
+                    </Column>
+
+                    <Column>
+                        <Text text="Status"/>
+                    </Column>
+
+                </columns>
+
+                <items>
+
+                    <ColumnListItem
+                        type="Navigation"
+                        press=".onRequestPress">
+
+                        <cells>
+
+                            <Text
+                                text="{requestNumber}"/>
+
+                            <Text
+                                text="{leaveType/name}"/>
+
+                            <Text
+                                text="{fromDate}"/>
+
+                            <Text
+                                text="{toDate}"/>
+
+                            <Text
+                                text="{numberOfDays}"/>
+
+                            <ObjectStatus
+                                text="{status}"
+                                state="{
+                                    path: 'status',
+                                    formatter: '.formatStatusState'
+                                }"/>
+
+                        </cells>
+
+                    </ColumnListItem>
+
+                </items>
+
+            </Table>
+
+        </content>
+
+    </Page>
+
+</mvc:View>

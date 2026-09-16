@@ -1,0 +1,298 @@
+<mvc:View
+    controllerName="hradmin.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:core="sap.ui.core"
+    displayBlock="true">
+
+    <Page
+        title="HR Admin &amp; Manager Workspace"
+        showHeader="true"
+        enableScrolling="true">
+
+        <content>
+
+            <IconTabBar
+                id="adminTabs"
+                expanded="true"
+                select=".onTabSelect"
+                class="sapUiResponsiveContentPadding">
+
+                <items>
+
+                    <!-- TAB 1: EMPLOYEE MASTER (Master-Detail) -->
+                    <IconTabFilter
+                        key="employees"
+                        icon="sap-icon://group"
+                        text="Employee Master">
+
+                        <HBox width="100%" alignItems="Start" class="sapUiSmallMarginTop">
+
+                            <!-- Left Column: Employees Table -->
+                            <VBox width="{= ${adminModel>/selected} ? '55%' : '100%' }" class="sapUiNoMargin">
+                                <Table
+                                    id="employeeTable"
+                                    items="{/Employees}"
+                                    growing="true"
+                                    growingThreshold="15">
+                                    <headerToolbar>
+                                        <Toolbar>
+                                            <Title text="Employee Directory" level="H2"/>
+                                            <ToolbarSpacer/>
+                                            <SearchField
+                                                width="220px"
+                                                search=".onSearchEmployees"/>
+                                            <Button
+                                                text="Add Employee"
+                                                icon="sap-icon://add"
+                                                type="Emphasized"
+                                                press=".onOpenAddEmployee"/>
+                                        </Toolbar>
+                                    </headerToolbar>
+                                    <columns>
+                                        <Column><Text text="Code"/></Column>
+                                        <Column><Text text="Full Name"/></Column>
+                                        <Column><Text text="Email"/></Column>
+                                        <Column><Text text="Status"/></Column>
+                                    </columns>
+                                    <items>
+                                        <ColumnListItem
+                                            type="Navigation"
+                                            press=".onEmployeeSelect">
+                                            <cells>
+                                                <Text text="{employeeCode}"/>
+                                                <Text text="{firstName} {lastName}"/>
+                                                <Text text="{email}"/>
+                                                <ObjectStatus
+                                                    text="{status}"
+                                                    state="{
+                                                        path: 'status',
+                                                        formatter: '.formatEmployeeStatusState'
+                                                    }"/>
+                                            </cells>
+                                        </ColumnListItem>
+                                    </items>
+                                </Table>
+                            </VBox>
+
+                            <!-- Right Column: Employee Detail / Edit Form -->
+                            <VBox
+                                width="43%"
+                                visible="{adminModel>/selected}"
+                                class="sapUiMediumMarginBegin">
+                                <Panel
+                                    id="employeeDetailPanel"
+                                    accessibleRole="Region">
+                                    <headerToolbar>
+                                        <Toolbar>
+                                            <Title text="Employee Details" level="H2"/>
+                                            <ToolbarSpacer/>
+                                            <Button
+                                                text="Delete"
+                                                icon="sap-icon://delete"
+                                                type="Reject"
+                                                press=".onDeleteEmployee"/>
+                                            <Button
+                                                icon="sap-icon://decline"
+                                                tooltip="Close Details"
+                                                press=".onCloseDetail"/>
+                                        </Toolbar>
+                                    </headerToolbar>
+                                    <content>
+                                        <form:SimpleForm
+                                            editable="true"
+                                            layout="ResponsiveGridLayout"
+                                            labelSpanXL="4"
+                                            labelSpanL="4"
+                                            labelSpanM="4">
+                                            <form:content>
+                                                <Label text="Employee Code"/>
+                                                <Input value="{employeeCode}"/>
+
+                                                <Label text="First Name"/>
+                                                <Input value="{firstName}"/>
+
+                                                <Label text="Last Name"/>
+                                                <Input value="{lastName}"/>
+
+                                                <Label text="Email"/>
+                                                <Input value="{email}"/>
+
+                                                <Label text="Department"/>
+                                                <Select
+                                                    id="departmentSelect"
+                                                    selectedKey="{path: 'department_ID', mode: 'OneWay'}"
+                                                    items="{/Departments}"
+                                                    change=".onDepartmentChange">
+                                                    <core:Item key="{ID}" text="{name}"/>
+                                                </Select>
+
+                                                <Label text="Manager"/>
+                                                <Input
+                                                    id="managerInput"
+                                                    value="{path: 'manager_ID', mode: 'OneWay'}"
+                                                    showValueHelp="true"
+                                                    valueHelpRequest=".onManagerValueHelp"/>
+
+                                                <Label text="Status"/>
+                                                <Select
+                                                    id="statusSelect"
+                                                    selectedKey="{path: 'status', mode: 'OneWay'}"
+                                                    change=".onStatusChange">
+                                                    <core:Item key="Active" text="Active"/>
+                                                    <core:Item key="Inactive" text="Inactive"/>
+                                                </Select>
+                                            </form:content>
+                                        </form:SimpleForm>
+                                    </content>
+                                </Panel>
+                            </VBox>
+
+                        </HBox>
+
+                    </IconTabFilter>
+
+                    <!-- TAB 2: LEAVE REQUESTS OVERVIEW -->
+                    <IconTabFilter
+                        key="overview"
+                        icon="sap-icon://general-leave-request"
+                        text="Leave Requests Overview">
+
+                        <VBox>
+                            <Toolbar>
+                                <SearchField
+                                    id="overviewSearch"
+                                    width="280px"
+                                    placeholder="Search employee or department..."
+                                    search=".onOverviewSearch"/>
+                                <ToolbarSpacer/>
+                                <Button
+                                    text="Refresh Report"
+                                    icon="sap-icon://refresh"
+                                    press=".onRefreshOverview"/>
+                            </Toolbar>
+
+                            <IconTabBar
+                                id="overviewStatusTabs"
+                                select=".onOverviewStatusFilter"
+                                class="sapUiSmallMarginTop">
+                                <items>
+                                    <IconTabFilter key="ALL" text="All"/>
+                                    <IconTabFilter key="Submitted" text="Submitted"/>
+                                    <IconTabFilter key="Approved" text="Approved"/>
+                                    <IconTabFilter key="Rejected" text="Rejected"/>
+                                    <IconTabFilter key="Cancelled" text="Cancelled"/>
+                                </items>
+                            </IconTabBar>
+
+                            <Table
+                                id="overviewTable"
+                                items="{/LeaveRequestOverview}"
+                                growing="true"
+                                growingThreshold="15">
+                                <columns>
+                                    <Column><Text text="Request Number"/></Column>
+                                    <Column><Text text="Employee"/></Column>
+                                    <Column><Text text="Department"/></Column>
+                                    <Column><Text text="Leave Type"/></Column>
+                                    <Column><Text text="From"/></Column>
+                                    <Column><Text text="To"/></Column>
+                                    <Column><Text text="Days"/></Column>
+                                    <Column><Text text="Status"/></Column>
+                                </columns>
+                                <items>
+                                    <ColumnListItem>
+                                        <cells>
+                                            <Text text="{requestNumber}"/>
+                                            <Text text="{firstName} {lastName}"/>
+                                            <Text text="{departmentName}"/>
+                                            <Text text="{leaveTypeName}"/>
+                                            <Text text="{fromDate}"/>
+                                            <Text text="{toDate}"/>
+                                            <Text text="{numberOfDays}"/>
+                                            <ObjectStatus
+                                                text="{status}"
+                                                state="{
+                                                    path: 'status',
+                                                    formatter: '.formatStatusState'
+                                                }"/>
+                                        </cells>
+                                    </ColumnListItem>
+                                </items>
+                            </Table>
+                        </VBox>
+
+                    </IconTabFilter>
+
+                    <!-- TAB 3: PENDING APPROVALS -->
+                    <IconTabFilter
+                        key="approvals"
+                        icon="sap-icon://approvals"
+                        text="Pending Approvals">
+
+                        <Table
+                            id="approvalsTable"
+                            items="{/LeaveRequests}"
+                            growing="true">
+                            <headerToolbar>
+                                <Toolbar>
+                                    <Title text="Manager Action Queue" level="H2"/>
+                                    <ToolbarSpacer/>
+                                    <Button
+                                        text="Refresh Queue"
+                                        icon="sap-icon://refresh"
+                                        press=".onRefreshApprovals"/>
+                                </Toolbar>
+                            </headerToolbar>
+                            <columns>
+                                <Column><Text text="Request Number"/></Column>
+                                <Column><Text text="Workflow Instance"/></Column>
+                                <Column><Text text="From"/></Column>
+                                <Column><Text text="To"/></Column>
+                                <Column><Text text="Days"/></Column>
+                                <Column><Text text="Reason"/></Column>
+                                <Column><Text text="Decision"/></Column>
+                            </columns>
+                            <items>
+                                <ColumnListItem>
+                                    <cells>
+                                        <Text text="{requestNumber}"/>
+                                        <ObjectStatus
+                                            text="{workflowInstanceId}"
+                                            icon="sap-icon://process"
+                                            state="Information"/>
+                                        <Text text="{fromDate}"/>
+                                        <Text text="{toDate}"/>
+                                        <Text text="{numberOfDays}"/>
+                                        <Text text="{reason}"/>
+                                        <HBox>
+                                            <Button
+                                                text="Approve"
+                                                type="Accept"
+                                                icon="sap-icon://accept"
+                                                press=".onApproveRequest"
+                                                class="sapUiTinyMarginEnd"/>
+                                            <Button
+                                                text="Reject"
+                                                type="Reject"
+                                                icon="sap-icon://decline"
+                                                press=".onRejectRequest"/>
+                                        </HBox>
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
+
+                    </IconTabFilter>
+
+                </items>
+
+            </IconTabBar>
+
+        </content>
+
+    </Page>
+
+</mvc:View>

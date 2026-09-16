@@ -1,0 +1,13 @@
+{
+  "generator-ui5-project": {
+    "namespaceUI5": "raven.hr.selfservice",
+    "projectName": "hrselfservice",
+    "uimoduleName": "hrselfservice",
+    "enableFPM": false,
+    "platform": "Application Router",
+    "ui5Libs": "Content delivery network (SAPUI5)",
+    "newDir": true,
+    "initRepo": false,
+    "projectId": "raven.hr.selfservice.hrselfservice"
+  }
+}

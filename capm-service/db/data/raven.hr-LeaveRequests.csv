@@ -1,0 +1,4 @@
+ID;requestNumber;employee_ID;leaveType_ID;fromDate;toDate;numberOfDays;reason;status;managerComment;workflowInstanceId
+c0010001-1111-2222-3333-444455556666;LR-000001;65c65f04-4c72-4df2-ab07-a7e1aafe889b;f124a46d-09de-400c-b24e-0d6abdb57331;2026-03-10;2026-03-11;2.0;Personal errands;Approved;Approved by manager;WF-1001
+c0010002-1111-2222-3333-444455556666;LR-000002;65c65f04-4c72-4df2-ab07-a7e1aafe889b;b345c67d-21fa-422e-c46a-2f8cdf079553;2026-04-01;2026-04-05;5.0;Vacation with family;Submitted;;WF-1002
+c0010003-1111-2222-3333-444455556666;LR-000003;22222222-3333-4444-5555-666666666666;a234b56c-10ef-411d-b35f-1e7bceb68442;2026-05-12;2026-05-13;2.0;Medical appointment;Submitted;;WF-1003

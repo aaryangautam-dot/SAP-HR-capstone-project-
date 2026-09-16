@@ -1,0 +1,126 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "HR Leave Management BPA Callback Actions",
+    "description": "OpenAPI specification for SAP Build Process Automation (BPA) service actions to execute leave request approval or rejection callbacks in the CAP service.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "/odata/v4/hr",
+      "description": "CAP HR Service OData V4 Endpoint"
+    }
+  ],
+  "paths": {
+    "/approveCallback": {
+      "post": {
+        "summary": "Approve Leave Request Callback",
+        "description": "Executes callback to approve a leave request, recalculate leave balances, and update request status to Approved.",
+        "operationId": "approveLeaveRequest",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CallbackRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Leave request approved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CallbackResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request or invalid parameters"
+          },
+          "404": {
+            "description": "Leave request not found"
+          },
+          "409": {
+            "description": "Conflict: request not in Submitted state"
+          }
+        }
+      }
+    },
+    "/rejectCallback": {
+      "post": {
+        "summary": "Reject Leave Request Callback",
+        "description": "Executes callback to reject a leave request, records manager comment, and updates request status to Rejected.",
+        "operationId": "rejectLeaveRequest",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CallbackRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Leave request rejected successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CallbackResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request or invalid parameters"
+          },
+          "404": {
+            "description": "Leave request not found"
+          },
+          "409": {
+            "description": "Conflict: request not in Submitted state"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "CallbackRequest": {
+        "type": "object",
+        "required": ["requestID"],
+        "properties": {
+          "requestID": {
+            "type": "string",
+            "format": "uuid",
+            "description": "The unique UUID identifier of the leave request.",
+            "example": "c0010001-1111-2222-3333-444455556666"
+          },
+          "comment": {
+            "type": "string",
+            "description": "Approval decision notes or reason for rejection provided by the manager.",
+            "example": "Approved by manager"
+          }
+        }
+      },
+      "CallbackResponse": {
+        "type": "object",
+        "properties": {
+          "@odata.context": {
+            "type": "string",
+            "example": "$metadata#Edm.String"
+          },
+          "value": {
+            "type": "string",
+            "example": "Approved. New balance: 18.0"
+          }
+        }
+      }
+    }
+  }
+}

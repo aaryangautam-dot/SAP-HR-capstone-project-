@@ -1,0 +1,4 @@
+ID;employeeCode;firstName;lastName;email;department_ID;manager_ID;dateOfJoining;status
+65c65f04-4c72-4df2-ab07-a7e1aafe889b;EMP001;Alex;Morgan;alex.morgan@company.com;8a2ceb3c-2a6c-3adc-8acc-1a0c6a2cba5c;11111111-2222-3333-4444-555555555555;2023-01-15;Active
+11111111-2222-3333-4444-555555555555;MGR001;Sarah;Connor;sarah.connor@company.com;8a2ceb3c-2a6c-3adc-8acc-1a0c6a2cba5c;;2020-03-01;Active
+22222222-3333-4444-5555-666666666666;EMP002;John;Doe;john.doe@company.com;9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d;11111111-2222-3333-4444-555555555555;2022-06-10;Active

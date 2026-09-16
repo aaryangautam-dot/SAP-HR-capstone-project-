@@ -1,0 +1,100 @@
+{
+  "id": "forms/approval-form.json",
+  "name": "Leave Request Approval Form",
+  "description": "Form presented to the manager in SAP Build Process Automation My Inbox to review and decide on leave requests.",
+  "layout": {
+    "sections": [
+      {
+        "title": "Request Overview",
+        "fields": [
+          {
+            "id": "requestNumber",
+            "label": "Request Number",
+            "type": "string",
+            "readOnly": true,
+            "value": "${context.requestNumber}"
+          },
+          {
+            "id": "employeeName",
+            "label": "Employee Name",
+            "type": "string",
+            "readOnly": true,
+            "value": "${context.employeeName}"
+          },
+          {
+            "id": "departmentName",
+            "label": "Department",
+            "type": "string",
+            "readOnly": true,
+            "value": "${context.departmentName}"
+          }
+        ]
+      },
+      {
+        "title": "Leave Schedule & Details",
+        "fields": [
+          {
+            "id": "leaveType",
+            "label": "Leave Type",
+            "type": "string",
+            "readOnly": true,
+            "value": "${context.leaveType}"
+          },
+          {
+            "id": "fromDate",
+            "label": "From Date",
+            "type": "date",
+            "readOnly": true,
+            "value": "${context.fromDate}"
+          },
+          {
+            "id": "toDate",
+            "label": "To Date",
+            "type": "date",
+            "readOnly": true,
+            "value": "${context.toDate}"
+          },
+          {
+            "id": "numberOfDays",
+            "label": "Requested Days",
+            "type": "number",
+            "readOnly": true,
+            "value": "${context.numberOfDays}"
+          },
+          {
+            "id": "reason",
+            "label": "Reason for Leave",
+            "type": "textarea",
+            "readOnly": true,
+            "value": "${context.reason}"
+          }
+        ]
+      },
+      {
+        "title": "Manager Decision",
+        "fields": [
+          {
+            "id": "decisionComment",
+            "label": "Manager Comment",
+            "type": "textarea",
+            "placeholder": "Enter approval remarks or mandatory reason for rejection...",
+            "readOnly": false,
+            "required": false
+          }
+        ]
+      }
+    ]
+  },
+  "actions": [
+    {
+      "id": "Approve",
+      "text": "Approve",
+      "type": "Positive"
+    },
+    {
+      "id": "Reject",
+      "text": "Reject",
+      "type": "Negative"
+    }
+  ]
+}

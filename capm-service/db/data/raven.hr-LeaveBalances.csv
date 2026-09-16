@@ -1,0 +1,4 @@
+ID;employee_ID;leaveType_ID;year;entitlement;used;balance
+1a1a1a1a-bbbb-cccc-dddd-eeeeeeeeeee1;65c65f04-4c72-4df2-ab07-a7e1aafe889b;f124a46d-09de-400c-b24e-0d6abdb57331;2026;12.0;2.0;10.0
+1a1a1a1a-bbbb-cccc-dddd-eeeeeeeeeee2;65c65f04-4c72-4df2-ab07-a7e1aafe889b;a234b56c-10ef-411d-b35f-1e7bceb68442;2026;10.0;0.0;10.0
+1a1a1a1a-bbbb-cccc-dddd-eeeeeeeeeee3;65c65f04-4c72-4df2-ab07-a7e1aafe889b;b345c67d-21fa-422e-c46a-2f8cdf079553;2026;20.0;5.0;15.0

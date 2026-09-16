@@ -1,0 +1,80 @@
+<mvc:View
+    controllerName="hrselfservice.controller.Balance"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+
+    <Page
+        title="My Leave Balance"
+        showNavButton="true"
+        navButtonPress=".onNavBack">
+
+        <content>
+
+            <VBox class="sapUiMediumMargin">
+
+                <Title
+                    text="Leave Balance - Current Year"
+                    level="H2"
+                    class="sapUiSmallMarginBottom"/>
+
+                <HBox
+                    wrap="Wrap"
+                    renderType="Bare">
+
+                    <GenericTile
+                        header="Casual Leave"
+                        subheader="Year 2026"
+                        class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+                        press=".onRefreshBalance">
+
+                        <TileContent>
+                            <NumericContent
+                                id="casualLeaveBalance"
+                                value="10"
+                                scale="Days"
+                                valueColor="Good"/>
+                        </TileContent>
+
+                    </GenericTile>
+
+                    <GenericTile
+                        header="Sick Leave"
+                        subheader="Year 2026"
+                        class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+                        press=".onRefreshBalance">
+
+                        <TileContent>
+                            <NumericContent
+                                id="sickLeaveBalance"
+                                value="10"
+                                scale="Days"
+                                valueColor="Good"/>
+                        </TileContent>
+
+                    </GenericTile>
+
+                    <GenericTile
+                        header="Annual Leave"
+                        subheader="Year 2026"
+                        class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+                        press=".onRefreshBalance">
+
+                        <TileContent>
+                            <NumericContent
+                                id="annualLeaveBalance"
+                                value="15"
+                                scale="Days"
+                                valueColor="Good"/>
+                        </TileContent>
+
+                    </GenericTile>
+
+                </HBox>
+
+            </VBox>
+
+        </content>
+
+    </Page>
+
+</mvc:View>
