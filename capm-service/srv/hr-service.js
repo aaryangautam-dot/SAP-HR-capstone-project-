@@ -61,7 +61,7 @@ module.exports = cds.service.impl(async function () {
         // Start the BPA workflow instance
         let workflowInstanceId = null;
         const workflowPayload = {
-            definitionId: 'raven.hr.leaveApproval',
+            definitionId: process.env.WORKFLOW_DEFINITION_ID || 'us10.ab417575trial.hrleaveapproval2.raven_hr_leaveApproval',
             context: {
                 requestID: id,
                 requestNumber,
@@ -81,13 +81,58 @@ module.exports = cds.service.impl(async function () {
             }
         };
 
+        // Strategy 1: Try starting via bound process-automation-service (capm-service-spa-workflow)
         try {
-            const workflow = await cds.connect.to('WORKFLOW');
-            const instance = await workflow.send('POST', '/workflow-instances', workflowPayload);
-            workflowInstanceId = instance?.id;
-            console.log(`[BPA Workflow] Successfully started workflow instance ${workflowInstanceId} for request ${requestNumber}`);
-        } catch (e) {
-            console.log('[BPA Workflow] WORKFLOW destination not configured or offline, continuing with local simulation state:', e.message);
+            const vcap = process.env.VCAP_SERVICES ? JSON.parse(process.env.VCAP_SERVICES) : {};
+            const spaService = (vcap['process-automation-service'] || []).find(s => s.name === 'capm-service-spa-workflow' || s.label === 'process-automation-service');
+            if (spaService && spaService.credentials) {
+                const creds = spaService.credentials;
+                const tokenUrl = (creds.uaa?.url || '').replace(/\/$/, '') + '/oauth/token';
+                const tokenParams = new URLSearchParams({
+                    grant_type: 'client_credentials',
+                    client_id: creds.uaa?.clientid,
+                    client_secret: creds.uaa?.clientsecret
+                });
+                const tokenRes = await fetch(tokenUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: tokenParams.toString()
+                });
+                const tokenData = await tokenRes.json();
+                if (tokenData.access_token) {
+                    const apiUrl = (creds.endpoints?.api || '').replace(/\/$/, '') + '/workflow/rest/v1/workflow-instances';
+                    const startRes = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: {
+                            'Authorization': `Bearer ${tokenData.access_token}`,
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(workflowPayload)
+                    });
+                    if (startRes.ok) {
+                        const startData = await startRes.json();
+                        workflowInstanceId = startData.id;
+                        console.log(`[BPA Workflow] Successfully started instance ${workflowInstanceId} via VCAP binding for ${requestNumber}`);
+                    } else {
+                        const errTxt = await startRes.text();
+                        console.error(`[BPA Workflow] VCAP start failed: ${startRes.status} ${errTxt}`);
+                    }
+                }
+            }
+        } catch (vcapErr) {
+            console.error('[BPA Workflow] Error invoking VCAP_SERVICES credentials:', vcapErr.message);
+        }
+
+        // Strategy 2: Fallback to cds.connect.to('WORKFLOW') destination
+        if (!workflowInstanceId) {
+            try {
+                const workflow = await cds.connect.to('WORKFLOW');
+                const instance = await workflow.send('POST', '/workflow-instances', workflowPayload);
+                workflowInstanceId = instance?.id;
+                console.log(`[BPA Workflow] Successfully started workflow instance ${workflowInstanceId} for request ${requestNumber}`);
+            } catch (e) {
+                console.log('[BPA Workflow] WORKFLOW destination not configured or offline, continuing with local simulation state:', e.message);
+            }
         }
 
         await UPDATE(LeaveRequests).set({
@@ -97,6 +142,20 @@ module.exports = cds.service.impl(async function () {
         }).where({ ID: id });
 
         return await SELECT.one.from(LeaveRequests).where({ ID: id });
+    });
+
+    this.before('CREATE', 'LeaveRequestAttachments', async (req) => {
+        const contentLength = req.headers?.['content-length'];
+        if (contentLength && Number(contentLength) > 10 * 1024 * 1024) {
+            return req.error(413, 'Attachment file size exceeds maximum allowed limit of 10 MB');
+        }
+    });
+
+    this.before('UPDATE', 'LeaveRequestAttachments', async (req) => {
+        const contentLength = req.headers?.['content-length'];
+        if (contentLength && Number(contentLength) > 10 * 1024 * 1024) {
+            return req.error(413, 'Attachment file size exceeds maximum allowed limit of 10 MB');
+        }
     });
 
     this.on('cancel', LeaveRequests, async (req) => {

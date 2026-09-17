@@ -164,7 +164,8 @@
                 "transition": "slide",
                 "type": "View",
                 "viewType": "XML",
-                "path": "hradmin.view"
+                "viewPath": "hradmin.view",
+                "async": true
             },
 
             "routes": [

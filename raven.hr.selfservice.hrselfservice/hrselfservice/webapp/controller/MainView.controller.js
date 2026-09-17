@@ -14,49 +14,61 @@ sap.ui.define([
     return Controller.extend(
         "hrselfservice.controller.MainView",
         {
+            onInit: function () {
+                this._bHasNavigated = false;
+                const oRouter = this.getOwnerComponent().getRouter();
+                if (oRouter) {
+                    oRouter.getRoute("myRequests").attachPatternMatched(this._onRouteMatched, this);
+                }
+            },
+
+            _onRouteMatched: function () {
+                if (!this._bHasNavigated) {
+                    this._bHasNavigated = true;
+                    return;
+                }
+                const oTable = this.byId("leaveTable");
+                if (oTable) {
+                    const oBinding = oTable.getBinding("items");
+                    if (oBinding) {
+                        oBinding.refresh();
+                    }
+                }
+            },
 
             onStatusFilter: function (oEvent) {
+                const sKey = oEvent.getParameter("key");
+                const oTable = this.byId("leaveTable");
+                const oBinding = oTable.getBinding("items");
 
-                const sKey =
-                    oEvent.getParameter("key");
-
-                const oTable =
-                    this.byId("leaveTable");
-
-                const oBinding =
-                    oTable.getBinding("items");
+                if (!oBinding) {
+                    return;
+                }
 
                 if (sKey === "ALL") {
                     oBinding.filter([]);
                     return;
                 }
 
-                const oFilter =
-                    new Filter(
-                        "status",
-                        FilterOperator.EQ,
-                        sKey
-                    );
+                const oFilter = new Filter(
+                    "status",
+                    FilterOperator.EQ,
+                    sKey
+                );
 
                 oBinding.filter([oFilter]);
             },
 
             formatStatusState: function (sStatus) {
-
                 switch (sStatus) {
-
                     case "Approved":
                         return "Success";
-
                     case "Rejected":
                         return "Error";
-
                     case "Submitted":
                         return "Information";
-
                     case "Cancelled":
                         return "Warning";
-
                     case "Draft":
                     default:
                         return "None";
@@ -64,39 +76,30 @@ sap.ui.define([
             },
 
             onCreateRequest: function () {
-
                 this.getOwnerComponent()
                     .getRouter()
                     .navTo("createRequest");
             },
 
             onNavToBalance: function () {
-
                 this.getOwnerComponent()
                     .getRouter()
                     .navTo("balance");
             },
 
             onNavToTeamCalendar: function () {
-
                 this.getOwnerComponent()
                     .getRouter()
                     .navTo("teamCalendar");
             },
 
             onRequestPress: function (oEvent) {
-
-                const oContext =
-                    oEvent.getSource()
-                        .getBindingContext();
-
+                const oContext = oEvent.getSource().getBindingContext();
                 if (!oContext) {
                     return;
                 }
 
-                const sID =
-                    oContext.getProperty("ID");
-
+                const sID = oContext.getProperty("ID");
                 this.getOwnerComponent()
                     .getRouter()
                     .navTo("leaveDetail", {

@@ -157,7 +157,8 @@
 				"transition": "slide",
 				"type": "View",
 				"viewType": "XML",
-				"path": "hrselfservice.view"
+				"viewPath": "hrselfservice.view",
+				"async": true
 			},
 			"routes": [
 				{
@@ -189,23 +190,28 @@
 			"targets": {
 				"myRequests": {
 					"viewName": "MainView",
-					"viewId": "MainView"
+					"viewId": "MainView",
+					"viewLevel": 1
 				},
 				"balance": {
 					"viewName": "Balance",
-					"viewId": "Balance"
+					"viewId": "Balance",
+					"viewLevel": 2
 				},
 				"createRequest": {
 					"viewName": "CreateRequest",
-					"viewId": "CreateRequest"
+					"viewId": "CreateRequest",
+					"viewLevel": 2
 				},
 				"leaveDetail": {
 					"viewName": "LeaveDetail",
-					"viewId": "LeaveDetail"
+					"viewId": "LeaveDetail",
+					"viewLevel": 2
 				},
 				"teamCalendar": {
 					"viewName": "TeamCalendar",
-					"viewId": "TeamCalendar"
+					"viewId": "TeamCalendar",
+					"viewLevel": 2
 				}
 			}
 		},

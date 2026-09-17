@@ -22,29 +22,25 @@ sap.ui.define([
 
             this.getRouter().initialize();
 
-            // Handle Work Zone / FLP intent routing
-            const fnHandleNavigation = () => {
-                try {
-                    const sHash = window.location.hash || "";
-                    const oComponentData = this.getComponentData();
-                    const oStartupParams = oComponentData && oComponentData.startupParameters;
-                    const sRoute = oStartupParams && oStartupParams.route && oStartupParams.route[0];
-                    const sTab = oStartupParams && oStartupParams.tab && oStartupParams.tab[0];
+            // Handle Work Zone / FLP initial intent routing
+            try {
+                const oComponentData = this.getComponentData();
+                const oStartupParams = oComponentData && oComponentData.startupParameters;
+                const sRouteParam = (oStartupParams && oStartupParams.route && oStartupParams.route[0]) ||
+                                    (oStartupParams && oStartupParams.tab && oStartupParams.tab[0]);
 
-                    if (sRoute === "leaveRequests" || sTab === "overview" || sHash.indexOf("HRAdmin-overview") > -1) {
-                        this.getRouter().navTo("leaveRequests");
-                    } else if (sRoute === "pendingApprovals" || sTab === "approvals" || sHash.indexOf("HRAdmin-approvals") > -1) {
-                        this.getRouter().navTo("pendingApprovals");
-                    } else if (sRoute === "employeeDirectory" || sRoute === "employees" || sTab === "employees" || sHash.indexOf("HRAdmin-manage") > -1) {
-                        this.getRouter().navTo("employeeDirectory");
+                const sCurrentHash = this.getRouter().getHashChanger().getHash();
+                if (!sCurrentHash && sRouteParam) {
+                    const sTargetRoute = sRouteParam === "overview" ? "leaveRequests" :
+                                         sRouteParam === "approvals" ? "pendingApprovals" :
+                                         sRouteParam === "employees" ? "employeeDirectory" : sRouteParam;
+                    if (this.getRouter().getRoute(sTargetRoute)) {
+                        this.getRouter().navTo(sTargetRoute, {}, true /* bReplace */);
                     }
-                } catch (e) {
-                    // router fallback
                 }
-            };
-
-            fnHandleNavigation();
-            window.addEventListener("hashchange", fnHandleNavigation);
+            } catch (e) {
+                // router fallback
+            }
         }
     });
 });

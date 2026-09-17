@@ -14,8 +14,7 @@
 
             <Wizard
                 id="leaveWizard"
-                finishButtonText="Submit"
-                complete=".onSubmitRequest">
+                finishButtonText="Submit">
 
                 <!-- STEP 1 -->
 
@@ -107,11 +106,12 @@
                             id="attachmentSet"
                             instantUpload="false"
                             items="{attachmentModel>/items}"
-                            fileTypes="pdf,jpg,png,docx,txt"
+                            fileTypes="pdf,jpg,png,docx,txt,mp4"
                             maxFileSize="10"
                             uploadEnabled="true"
                             afterItemAdded=".onAfterItemAdded"
-                            itemRemoved=".onAttachmentRemoved">
+                            itemRemoved=".onAttachmentRemoved"
+                            fileSizeExceeded=".onFileSizeExceeded">
 
                             <upload:items>
 

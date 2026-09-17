@@ -42,7 +42,10 @@ sap.ui.define([
             if (oApprovalsTable) {
                 const oBinding = oApprovalsTable.getBinding("items");
                 if (oBinding) {
-                    oBinding.filter([new Filter("status", FilterOperator.EQ, "Submitted")]);
+                    oBinding.filter([
+                        new Filter("status", FilterOperator.EQ, "Submitted"),
+                        new Filter("requestNumber", FilterOperator.NE, null)
+                    ]);
                 }
             }
 
@@ -400,7 +403,10 @@ sap.ui.define([
         onRefreshApprovals: function () {
             const oBinding = this.byId("approvalsTable").getBinding("items");
             if (oBinding) {
-                oBinding.filter([new Filter("status", FilterOperator.EQ, "Submitted")]);
+                oBinding.filter([
+                    new Filter("status", FilterOperator.EQ, "Submitted"),
+                    new Filter("requestNumber", FilterOperator.NE, null)
+                ]);
                 oBinding.refresh();
                 MessageToast.show("Approvals queue refreshed");
             }

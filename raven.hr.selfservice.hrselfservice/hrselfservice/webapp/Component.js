@@ -23,28 +23,19 @@ sap.ui.define([
 
             this.getRouter().initialize();
 
-            // Handle Work Zone / FLP intent routing
-            const fnHandleNavigation = () => {
-                try {
-                    const sHash = window.location.hash || "";
-                    const oComponentData = this.getComponentData();
-                    const oStartupParams = oComponentData && oComponentData.startupParameters;
-                    const sRoute = oStartupParams && oStartupParams.route && oStartupParams.route[0];
+            // Handle Work Zone / FLP initial intent routing
+            try {
+                const oComponentData = this.getComponentData();
+                const oStartupParams = oComponentData && oComponentData.startupParameters;
+                const sRouteParam = oStartupParams && oStartupParams.route && oStartupParams.route[0];
 
-                    if (sRoute === "balance" || sHash.indexOf("LeaveRequest-balance") > -1) {
-                        this.getRouter().navTo("balance");
-                    } else if (sRoute === "createRequest" || sHash.indexOf("LeaveRequest-create") > -1) {
-                        this.getRouter().navTo("createRequest");
-                    } else if (sRoute === "myRequests" || sHash.indexOf("LeaveRequest-manage") > -1) {
-                        this.getRouter().navTo("myRequests");
-                    }
-                } catch (e) {
-                    // router fallback
+                const sCurrentHash = this.getRouter().getHashChanger().getHash();
+                if (!sCurrentHash && sRouteParam && this.getRouter().getRoute(sRouteParam)) {
+                    this.getRouter().navTo(sRouteParam, {}, true /* bReplace */);
                 }
-            };
-
-            fnHandleNavigation();
-            window.addEventListener("hashchange", fnHandleNavigation);
+            } catch (e) {
+                // router fallback
+            }
         }
     });
 });
